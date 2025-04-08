@@ -42,7 +42,7 @@
   "name": "yes-chef",
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently \"node server/app.ts\" \"cd client && npm run dev\"",
+    "start": "api/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch server/app.ts"
   },
