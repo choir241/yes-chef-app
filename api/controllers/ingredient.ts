@@ -64,7 +64,7 @@ router.patch("/ingredients/updateQuantity/:id", async (req, res) => {
    console.log("Starting updating ingredients");
 
    //Find collection and convert to array
-   const result = await collection.updateOne(
+   const result = await collection.updateOne(()=>
     {_id: id},
     {$set:
       {
@@ -83,7 +83,7 @@ router.patch("/ingredients/updateQuantity/:id", async (req, res) => {
 });
 
   //manual update of ingredient waste on reports
-  router.patch("/ingredients/wasteToday/:id", async (req, res) => {
+  router.patch("/ingredients/wasteToday/:id", async (req: any, res: any) => {
     try{
       // const id = new ObjectId(req.params.id)
       if (!ObjectId.isValid(req.params.id)) {
@@ -109,14 +109,14 @@ router.patch("/ingredients/updateQuantity/:id", async (req, res) => {
 
   console.log("Starting updating ingredient waste");
 
-  const ingredient = await collection.findOne({ _id: id });
+  const ingredient = await collection.findOne(()=>{ _id: id });
   if (!ingredient) {
     client.close(); // Close connection if ingredient doesn't exist
     return res.status(404).json({ error: "Ingredient not found" });
   }
 
   //Find collection and convert to array
-  const result = await collection.updateOne(
+  const result = await collection.updateOne(()=>
    {_id: id},
    {$set:
      {

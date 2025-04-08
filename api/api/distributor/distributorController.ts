@@ -2,7 +2,7 @@ import express from 'express';
 import { fetchIngredientData } from './distributorService.ts'; 
 import { fallbackData } from './fallbackData.ts';
 
-export const getDistributorIngredients = async (req, res) => {
+export const getDistributorIngredients = async (req: any, res: any) => {
 
   const { query } = req.params;
   try {

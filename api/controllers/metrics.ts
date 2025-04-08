@@ -24,7 +24,7 @@ router.get("/metrics/:id", async (req, res) => {
 
     console.log("Starting fetching of ingredients");
 
-    const ingredients = await collection.find({_id: id}).toArray();
+    const ingredients = await collection.find(()=>{_id: id}).toArray();
 
     res.status(200).json(ingredients);
     console.log("Ingredients were successfully fetched!");
