@@ -1,4 +1,3 @@
-import express from 'express';
 import { fetchIngredientData } from './distributorService.ts'; 
 import { fallbackData } from './fallbackData.ts';
 

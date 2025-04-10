@@ -1,8 +1,8 @@
 import express from "express";
 import { Collection, ObjectId } from "mongodb";
-import { Client_Connect } from "../../config/config.ts";
-import type { IIngredient } from "../../client/src/models/Ingredient.ts";
-import type { IMenu, IMenuIngredient } from "../../client/src/models/Menu.ts";
+import { Client_Connect } from "../config.ts";
+import type { IIngredient } from "../models/Ingredient.ts";
+import type { IMenu, IMenuIngredient } from "../models/Menu.ts";
 
 
 const router = express.Router();

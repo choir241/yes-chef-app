@@ -1,9 +1,9 @@
 import express, { Router }  from "express";
-import { Client_Connect } from "../../config/config.ts";
-import type { ITicket } from "../../client/src/models/Ticket.ts";
-import { Collection, ObjectId } from "mongodb";
+import { Client_Connect } from "../config.ts";
+import type { ITicket } from "../models/Ticket.ts";
+import { Collection } from "mongodb";
 import { decrementIngredients } from "./ingredient.ts";
-import type { IIngredient } from "../../client/src/models/Ingredient.ts";
+import type { IIngredient } from "../models/Ingredient.ts";
 
 const router: Router = express.Router();
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import { SERVER } from '../config/config.ts';
+import { SERVER } from './config.ts';
 import ingredient from './controllers/ingredient.ts';
 import orders from './controllers/order.ts';
 import kitchen from './controllers/kitchen.ts';
