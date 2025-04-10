@@ -41,10 +41,11 @@
   ],
   "name": "yes-chef",
   "version": "0.0.0",
+  "main": "index.js",
   "scripts": {
-    "start": "node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch server/app.ts"
+    "dev": "node --watch server/app.ts",
+    "build": "tsc index.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
