@@ -5,7 +5,6 @@ import type {IMenu} from "../../client/src/models/Menu.ts";
 import type {IIngredient} from "../../client/src/models/Ingredient.ts";
 
 
-
 const router = express.Router();
 
 
