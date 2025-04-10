@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { MongoClient } from "mongodb";
 
-const env = './config/.env';
+const env = '.env';
 dotenv.config({ path: env });
 
 export const SERVER = {
