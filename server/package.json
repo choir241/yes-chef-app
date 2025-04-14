@@ -1,0 +1,82 @@
+{
+  "type": "module",
+  "description": "Smart Restaraunt Management System",
+  "contributors": [
+    {
+      "name": "Elder",
+      "url": "https://github.com/elderheim"
+    },
+    {
+      "name": "Nikki",
+      "url": "https://github.com/code-guppy"
+    },
+    {
+      "name": "Anton Shelkovnikov",
+      "url": "https://github.com/Antosha9108"
+    },
+    {
+      "name": "Megan McNeill",
+      "url": "https://github.com/bluethreadmade"
+    },
+    {
+      "name": "Jamal Hall",
+      "url": "https://github.com/JamalHall"
+    },
+    {
+      "name": "Richard Choi",
+      "url": "https://github.com/choir241"
+    },
+    {
+      "name": "Sarah A",
+      "url": "https://github.com/Sah11-0"
+    },
+    {
+      "name": "Thomas Harris",
+      "url": "https://github.com/LodenH16"
+    },
+    {
+      "name": "Tynon Johnson",
+      "url": "https://github.com/tdjohnson7"
+    }
+  ],
+  "name": "yes-chef",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "tsup server/ --out-dir server/dist",
+    "start": "concurrently \"node server/app.ts\" \"cd client && npm run dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server/dist/app.js"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.9",
+    "@tanstack/react-query": "^5.69.0",
+    "axios": "^1.8.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongodb": "^6.14.0",
+    "npm": "^11.1.0",
+    "tailwindcss": "^4.0.9"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.8",
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
+  },
+  "tsup": {
+    "entry": [
+      "server",
+      "!server/dist"
+    ],
+    "splitting": false,
+    "clean": true,
+    "format": [
+      "esm"
+    ]
+  }
+}
