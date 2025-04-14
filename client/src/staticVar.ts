@@ -1,1 +1,1 @@
-export const ENDPOINT_URL = "yes-chef-app-backend.vercel.app";
+export const ENDPOINT_URL = "https://yes-chef-app.vercel.app/"
