@@ -15,7 +15,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCartIcon } from "lucide-react";
-import { IncrementingInput } from "@/components/ui/incrementingInput";
+import { IncrementingInput } from "@/components/ui/IncrementingInput";
 import FloatingCard from "./ui/floatingCard";
 
 interface Ingredient {
