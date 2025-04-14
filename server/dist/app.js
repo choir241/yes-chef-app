@@ -455,7 +455,6 @@ var distributorRoutes_default = router6;
 var app = express7();
 var corsOptions = { origin: "https://yes-chef-app.vercel.app/" };
 app.use(cors(corsOptions));
-var PORT = SERVER.SERVER_PORT;
 function startServer() {
   return __async(this, null, function* () {
     try {
@@ -466,9 +465,9 @@ function startServer() {
       app2.use(express7.json());
       console.log("Connect to the database");
       app2.use("/", ingredient_default, kitchen_default, menu_default, order_default, metrics_default, distributorRoutes_default);
-      yield app2.listen(PORT, () => {
+      yield app2.listen(process.env.PORT, () => {
         console.log(`The Server is running use ^c to chill server`);
-        console.log(`Server started on ${SERVER.SERVER_HOSTNAME}:${PORT}`);
+        console.log(`Server started on ${SERVER.SERVER_HOSTNAME}:${process.env.PORT}`);
       });
       return app2;
     } catch (err) {
