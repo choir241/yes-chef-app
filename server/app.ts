@@ -11,8 +11,12 @@ import distributorRoutes from './api/distributor/distributorRoutes.ts';
 
 const app = express();
 
-const corsOptions = { origin: 'https://yes-chef-app.vercel.app/' }
-app.use(cors(corsOptions))
+app.use(cors({
+	origin: 'https://yes-chef-app.vercel.app',
+	methods: ['GET', 'POST', 'PUT', 'DELETE'],
+	allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 async function startServer() {
 
 	try {
