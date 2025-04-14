@@ -1,5 +1,5 @@
 import express, { Router }  from "express";
-import { Client_Connect } from "../../config/config.ts";
+import { Client_Connect } from '../config/config.ts';
 import type { ITicket } from "../../client/src/models/Ticket.ts";
 import { Collection, ObjectId } from "mongodb";
 import { decrementIngredients } from "./ingredient.ts";

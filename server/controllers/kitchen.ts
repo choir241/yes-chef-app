@@ -1,5 +1,5 @@
 import express from "express";
-import {Client_Connect} from "../../config/config.ts";
+import {Client_Connect} from "../config/config.ts";
 
 const router = express.Router();
 

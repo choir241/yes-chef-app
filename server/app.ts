@@ -1,5 +1,5 @@
 import express from 'express';
-import { SERVER } from '../config/config.ts';
+import { SERVER } from './config/config.ts';
 import menu from './controllers/menu.ts'
 import ingredient from './controllers/ingredient.ts';
 import orders from './controllers/order.ts';
@@ -13,7 +13,6 @@ const app = express();
 
 const corsOptions = { origin: 'https://yes-chef-app.vercel.app/' }
 app.use(cors(corsOptions))
-const PORT = SERVER.SERVER_PORT;
 async function startServer() {
 
 	try {
@@ -30,9 +29,9 @@ async function startServer() {
 
 		app.use('/', ingredient, kitchen, menu, orders, metrics, distributorRoutes);
 
-		await app.listen(PORT, () => {
+		await app.listen(process.env.PORT, () => {
 			console.log(`The Server is running use ^c to chill server`);
-			console.log(`Server started on ${SERVER.SERVER_HOSTNAME}:${PORT}`);
+			console.log(`Server started on ${SERVER.SERVER_HOSTNAME}:${process.env.PORT}`);
 		});
 
 		return app;

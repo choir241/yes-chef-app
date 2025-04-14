@@ -1,6 +1,6 @@
 import express from "express";
 import { Collection, ObjectId} from "mongodb";
-import { Client_Connect } from "../../config/config.ts";
+import { Client_Connect } from "../config/config.ts";
 import type {IMenu} from "../../client/src/models/Menu.ts";
 import type {IIngredient} from "../../client/src/models/Ingredient.ts";
 
