@@ -1,1 +1,1 @@
-export const ENDPOINT_URL = "http://localhost:8000";
+export const ENDPOINT_URL = "yes-chef-app-backend.vercel.app";
