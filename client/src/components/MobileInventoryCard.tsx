@@ -17,6 +17,7 @@ import { Badge } from "@/components/ui/badge";
 import { ShoppingCartIcon } from "lucide-react";
 import { IncrementingInput } from "@/components/ui/IncrementingInput";
 import FloatingCard from "./ui/floatingCard";
+import { ENDPOINT_URL } from "@/staticVar";
 
 interface Ingredient {
   _id: string;
@@ -35,7 +36,7 @@ export function MobileInventoryCard() {
   const [endIndex, setEndIndex] = useState(rowsPerPage);
 
   function fetchIngredients() {
-    fetch("http://localhost:8000/ingredients")
+    fetch(`http://${ENDPOINT_URL}/ingredients`)
       .then(function (response) {
         return response.json();
       })

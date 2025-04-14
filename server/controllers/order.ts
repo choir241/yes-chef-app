@@ -45,7 +45,7 @@ router.post("/orders", async (req, res) => {
 
 router.patch("/orders/status", async (req, res) => {
  try {
-   res.set('Access-Control-Allow-Origin', 'http://localhost:5173');
+   res.set('Access-Control-Allow-Origin', `${process.env.PORT}`);
 
    const client = await Client_Connect();
    const db = client.db("Point_of_sale_system");
