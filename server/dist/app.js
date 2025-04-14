@@ -453,8 +453,11 @@ var distributorRoutes_default = router6;
 
 // server/app.ts
 var app = express7();
-var corsOptions = { origin: "https://yes-chef-app.vercel.app/" };
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: "https://yes-chef-app.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 function startServer() {
   return __async(this, null, function* () {
     try {
