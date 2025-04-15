@@ -13,7 +13,7 @@ const app = express();
 
 const allowedOrigins =[
 	"https://localhost:5173",
-	"https://yes-chef-app.vercel.app/"
+	"https://yes-chef-app.vercel.app"
 ];
 
 app.use(
