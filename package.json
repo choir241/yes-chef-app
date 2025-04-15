@@ -45,7 +45,7 @@
     "build": "tsup server/ --out-dir server/dist",
     "start": "concurrently \"node server/app.ts\" \"cd client && npm run dev\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node server/dist/app.js"
+    "dev": "cd client && npm run dev"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
