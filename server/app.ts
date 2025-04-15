@@ -11,11 +11,23 @@ import distributorRoutes from './api/distributor/distributorRoutes.ts';
 
 const app = express();
 
-app.use(cors({
-	origin: 'https://yes-chef-app.vercel.app',
-	methods: ['GET', 'POST', 'PUT', 'DELETE'],
-	allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+const allowedOrigins =[
+	"https://localhost:5173",
+	"https://yes-chef-app.vercel.app/"
+];
+
+app.use(
+	cors({
+		origin: (origin, callback) => {
+			if(!origin || allowedOrigins.includes(origin)){
+				callback(null, true);
+			}else{
+				callback(new Error("not allowed by CORS"))
+			}
+		},
+		credentials: true,
+	})
+);
 
 async function startServer() {
 
