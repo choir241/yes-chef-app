@@ -10,7 +10,7 @@ const router = express.Router();
 router.get("/ingredients", async (req, res) => {
   try {
     //allows cors for front end api
-    res.set('Access-Control-Allow-Origin', `${process.env.PORT}`);
+    res.set('Access-Control-Allow-Origin', `${process.env.URL}`);
 
     // init db connection with MongoClient
     const client = await Client_Connect();
@@ -52,7 +52,7 @@ router.patch("/ingredients/updateQuantity/:id", async (req, res) => {
     }
 
   //allows cors for front end api
-  res.set('Access-Control-Allow-Origin', `${process.env.PORT}`);
+  res.set('Access-Control-Allow-Origin', `${process.env.URL}`);
    // init db connection with MongoClient
    const client = await Client_Connect();
 
@@ -98,7 +98,7 @@ router.patch("/ingredients/updateQuantity/:id", async (req, res) => {
         throw new Error("quantity wasted must be greater than 0")
       }
         //allows cors for front end api
-  res.set('Access-Control-Allow-Origin', `${process.env.PORT}`);
+  res.set('Access-Control-Allow-Origin', `${process.env.URL}`);
   // init db connection with MongoClient
   const client = await Client_Connect();
 
