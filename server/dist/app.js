@@ -449,25 +449,26 @@ router6.get("/api/distributor/search/:query", getDistributorIngredients);
 var distributorRoutes_default = router6;
 
 // server/app.ts
-var app = express7();
-app.use(cors());
 function startServer() {
   return __async(this, null, function* () {
     try {
       console.log("Starting Express Application");
-      const app2 = express7();
-      app2.use(express7.urlencoded({ extended: true }));
-      app2.use(express7.json());
+      const app = express7();
+      app.use(express7.urlencoded({ extended: true }));
+      app.use(express7.json());
+      app.use(cors());
       console.log("Connect to the database");
-      app2.use("/", ingredient_default, kitchen_default, menu_default, order_default, metrics_default, distributorRoutes_default);
-      app2.get("*", (req, res) => {
+      app.use("/", ingredient_default, kitchen_default, menu_default, order_default, metrics_default, distributorRoutes_default);
+      app.get("*", (req, res) => {
         res.sendFile(path.join("../../client/dist", "index.html"));
       });
-      yield app2.listen(process.env.PORT, () => {
+      yield app.listen(process.env.PORT, () => {
         console.log(`The Server is running use ^c to chill server`);
-        console.log(`Server started on ${SERVER.SERVER_HOSTNAME}:${process.env.PORT}`);
+        console.log(
+          `Server started on ${SERVER.SERVER_HOSTNAME}:${process.env.PORT}`
+        );
       });
-      return app2;
+      return app;
     } catch (err) {
       console.error("Failed to start server:", err);
       process.exit(1);
