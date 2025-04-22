@@ -11,7 +11,7 @@ import distributorRoutes from './api/distributor/distributorRoutes.ts';
 
 const app = express();
 
-const corsOptions = { origin: 'https://yes-chef-app.vercel.app' }
+const corsOptions = { origin: 'https://yescheff.netlify.app' }
 app.use(cors(corsOptions))
 
 async function startServer() {
