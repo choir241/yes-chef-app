@@ -103,7 +103,7 @@ var Client_Connect2 = () => __async(void 0, null, function* () {
 var router2 = express2.Router();
 router2.get("/ingredients", (req, res) => __async(void 0, null, function* () {
   try {
-    res.set("Access-Control-Allow-Origin", `${process.env.PORT}`);
+    res.set("Access-Control-Allow-Origin", `${process.env.URL}`);
     const client = yield Client_Connect2();
     const db = client.db("Inventory");
     const collection = db.collection("Ingredients");
@@ -130,7 +130,7 @@ router2.patch("/ingredients/updateQuantity/:id", (req, res) => __async(void 0, n
     } else if (updates < 0) {
       throw new Error("quantity must be greater than 0");
     }
-    res.set("Access-Control-Allow-Origin", `${process.env.PORT}`);
+    res.set("Access-Control-Allow-Origin", `${process.env.URL}`);
     const client = yield Client_Connect2();
     const db = client.db("Inventory");
     const collection = db.collection("Ingredients");
@@ -164,7 +164,7 @@ router2.patch("/ingredients/wasteToday/:id", (req, res) => __async(void 0, null,
     } else if (updates < 0) {
       throw new Error("quantity wasted must be greater than 0");
     }
-    res.set("Access-Control-Allow-Origin", `${process.env.PORT}`);
+    res.set("Access-Control-Allow-Origin", `${process.env.URL}`);
     const client = yield Client_Connect2();
     const db = client.db("Inventory");
     const collection = db.collection("Ingredients");
@@ -262,7 +262,7 @@ router3.post("/orders", (req, res) => __async(void 0, null, function* () {
 }));
 router3.patch("/orders/status", (req, res) => __async(void 0, null, function* () {
   try {
-    res.set("Access-Control-Allow-Origin", `${process.env.PORT}`);
+    res.set("Access-Control-Allow-Origin", `${process.env.URL}`);
     const client = yield Client_Connect();
     const db = client.db("Point_of_sale_system");
     const collection = db.collection("Order");
@@ -453,22 +453,8 @@ var distributorRoutes_default = router6;
 
 // server/app.ts
 var app = express7();
-var allowedOrigins = [
-  "https://localhost:5173",
-  "https://yes-chef-app.vercel.app"
-];
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("not allowed by CORS"));
-      }
-    },
-    credentials: true
-  })
-);
+var corsOptions = { origin: "https://yes-chef-app.vercel.app" };
+app.use(cors(corsOptions));
 function startServer() {
   return __async(this, null, function* () {
     try {

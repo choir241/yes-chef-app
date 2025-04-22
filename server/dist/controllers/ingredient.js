@@ -54,7 +54,7 @@ var Client_Connect = () => __async(void 0, null, function* () {
 var router = express.Router();
 router.get("/ingredients", (req, res) => __async(void 0, null, function* () {
   try {
-    res.set("Access-Control-Allow-Origin", `${process.env.PORT}`);
+    res.set("Access-Control-Allow-Origin", `${process.env.URL}`);
     const client = yield Client_Connect();
     const db = client.db("Inventory");
     const collection = db.collection("Ingredients");
@@ -81,7 +81,7 @@ router.patch("/ingredients/updateQuantity/:id", (req, res) => __async(void 0, nu
     } else if (updates < 0) {
       throw new Error("quantity must be greater than 0");
     }
-    res.set("Access-Control-Allow-Origin", `${process.env.PORT}`);
+    res.set("Access-Control-Allow-Origin", `${process.env.URL}`);
     const client = yield Client_Connect();
     const db = client.db("Inventory");
     const collection = db.collection("Ingredients");
@@ -115,7 +115,7 @@ router.patch("/ingredients/wasteToday/:id", (req, res) => __async(void 0, null, 
     } else if (updates < 0) {
       throw new Error("quantity wasted must be greater than 0");
     }
-    res.set("Access-Control-Allow-Origin", `${process.env.PORT}`);
+    res.set("Access-Control-Allow-Origin", `${process.env.URL}`);
     const client = yield Client_Connect();
     const db = client.db("Inventory");
     const collection = db.collection("Ingredients");
