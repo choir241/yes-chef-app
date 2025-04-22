@@ -11,8 +11,7 @@ import distributorRoutes from './api/distributor/distributorRoutes.ts';
 
 const app = express();
 
-const corsOptions = { origin: 'https://yescheff.netlify.app' }
-app.use(cors(corsOptions))
+app.use(cors());
 
 async function startServer() {
 
@@ -20,7 +19,6 @@ async function startServer() {
 		console.log('Starting Express Application');
 		const app = express();
 		//CORS for front end API for ingredients
-		app.use(cors())
 
 		app.use(express.urlencoded({ extended: true }));
 		app.use(express.json());
