@@ -453,14 +453,12 @@ var distributorRoutes_default = router6;
 
 // server/app.ts
 var app = express7();
-var corsOptions = { origin: "https://yes-chef-app.vercel.app" };
-app.use(cors(corsOptions));
+app.use(cors());
 function startServer() {
   return __async(this, null, function* () {
     try {
       console.log("Starting Express Application");
       const app2 = express7();
-      app2.use(cors());
       app2.use(express7.urlencoded({ extended: true }));
       app2.use(express7.json());
       console.log("Connect to the database");
