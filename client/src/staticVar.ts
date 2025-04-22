@@ -1,1 +1,1 @@
-export const ENDPOINT_URL = "http://localhost:8000"
+export const ENDPOINT_URL = "https://yes-chef-app.onrender.com"
