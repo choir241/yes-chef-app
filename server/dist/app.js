@@ -347,6 +347,7 @@ router5.post("/metrics", (req, res) => __async(void 0, null, function* () {
 var metrics_default = router5;
 
 // server/app.ts
+import path from "path";
 import cors from "cors";
 
 // server/api/distributor/distributorRoutes.ts
@@ -459,6 +460,9 @@ function startServer() {
       app2.use(express7.json());
       console.log("Connect to the database");
       app2.use("/", ingredient_default, kitchen_default, menu_default, order_default, metrics_default, distributorRoutes_default);
+      app2.get("*", (req, res) => {
+        res.sendFile(path.join("../../client/dist", "index.html"));
+      });
       yield app2.listen(process.env.PORT, () => {
         console.log(`The Server is running use ^c to chill server`);
         console.log(`Server started on ${SERVER.SERVER_HOSTNAME}:${process.env.PORT}`);

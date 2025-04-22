@@ -4,7 +4,6 @@ import { Client_Connect } from "../../config/config.ts";
 import type { IIngredient } from "../../client/src/models/Ingredient.ts";
 import type { IMenu, IMenuIngredient } from "../../client/src/models/Menu.ts";
 
-
 const router = express.Router();
 
 router.get("/ingredients", async (req, res) => {

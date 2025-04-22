@@ -5,6 +5,7 @@ import ingredient from './controllers/ingredient.ts';
 import orders from './controllers/order.ts';
 import kitchen from './controllers/kitchen.ts';
 import metrics from './controllers/metrics.ts';
+import path from "path";
 
 import cors from 'cors';
 import distributorRoutes from './api/distributor/distributorRoutes.ts';
@@ -28,6 +29,10 @@ async function startServer() {
 
 		app.use('/', ingredient, kitchen, menu, orders, metrics, distributorRoutes);
 
+		// Catch-all route for SPA - should be after API routes
+			app.get("*", (req, res) => {
+	res.sendFile(path.join("../../client/dist", "index.html"));
+  });
 		await app.listen(process.env.PORT, () => {
 			console.log(`The Server is running use ^c to chill server`);
 			console.log(`Server started on ${SERVER.SERVER_HOSTNAME}:${process.env.PORT}`);
