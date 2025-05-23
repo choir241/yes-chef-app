@@ -138,6 +138,12 @@ Menu Item card component
 
 ## Dependencies
 
-Utilty-First CSS framework: Tailwind CSS
-UI Component Library: Shadcn UI
-Router: React Router
+- Utilty-First CSS framework: Tailwind CSS
+- UI Component Library: Shadcn UI
+- Router: React Router
+
+## Tech Stacks
+
+- Frontend: Typescript
+- Library: React
+- Build tool: Vite
