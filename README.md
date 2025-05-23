@@ -65,12 +65,12 @@ MVP Features:
 
 V0
 
-![A dark-themed restaurant management dashboard shows active orders, kitchen predictions, inventory status, and revenue. It conveys an organized, efficient tone.](./client/src/assets/readme/v0Design.gif)
+![A dark-themed restaurant management dashboard shows active orders, kitchen predictions, inventory status, and revenue. It conveys an organized, efficient tone.](./client/app/assets/readme/v0Design.gif)
 
 Lovable
 
 ![A Restaurant Manager app interface displaying a menu section with tabs for different food categories. Images of dishes like crispy calamari and salmon are visible under menu selections. The tone is professional and organized.
-](./client/src/assets/readme/lovableDesign.gif)
+](./client/app/assets/readme/lovableDesign.gif)
 
 ## File Organization
 
