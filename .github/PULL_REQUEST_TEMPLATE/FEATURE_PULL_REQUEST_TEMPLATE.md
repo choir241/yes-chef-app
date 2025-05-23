@@ -13,10 +13,12 @@ Self-explanatory.
 Take the acceptance criteria from the issue and describe how the changes in the PR meets it.
 
 Example - As a short order chef, I want to quickly close an order ticket on the kitchen dashboard so that the waitstaff can grab the food while it's hot.
+
 - This PR lets the user close an order ticket quickly by displaying a close ticket button on the order card on the kitchen dashboard
-- Clicking the close ticket button updates the order status in the backend 
+- Clicking the close ticket button updates the order status in the backend
 
 ## Code Quality Checklist
+
 - [ ] Linted
 - [ ] Prettier (or other formater) Run
 - [ ] Meets WCAG 2.1 AA - validated by siteimprove
