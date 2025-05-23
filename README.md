@@ -78,6 +78,11 @@ Lovable
 
 ## Components
 
+Menu Item card component
+
+![A menu card for a Classic Burger priced at $12.99, featuring a juicy beef patty, lettuce, tomato, and special sauce. Includes add to cart button.](./client/app/assets/readme/menuCard.png)
+
+
 ## Hooks
 
 ## Reducers
@@ -87,3 +92,7 @@ Lovable
 ## Database Design
 
 ## Dependencies
+
+Utilty-First CSS framework: Tailwind CSS
+UI Component Library: Shadcn UI
+Router: React Router
