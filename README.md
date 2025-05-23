@@ -61,6 +61,17 @@ MVP Features:
         - Displays each ingredient item, the amount wasted for the item today, the total amount of ingredients wasted in a month, and in a year, and the total amount of money lost in the item being wasted
         - When the ingredient item waste quantity gets updated, the inventory ingredient item should also be updated to reflect the waste
 
+## Design
+
+V0
+
+![A dark-themed restaurant management dashboard shows active orders, kitchen predictions, inventory status, and revenue. It conveys an organized, efficient tone.](./client/src/assets/readme/v0Design.gif)
+
+Lovable
+
+![A Restaurant Manager app interface displaying a menu section with tabs for different food categories. Images of dishes like crispy calamari and salmon are visible under menu selections. The tone is professional and organized.
+](./client/src/assets/readme/lovableDesign.gif)
+
 ## File Organization
 
 ## Interfaces
