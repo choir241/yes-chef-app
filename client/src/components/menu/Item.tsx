@@ -3,13 +3,15 @@ import {
   CardContent,
   CardFooter,
   CardTitle,
-} from "@/components/ui/card";
+} from "../ui/card"
 import type { IMenuItem } from "./MenuInterfaces";
-import {Badge} from "@/components/ui/badge";
-import {Button} from "@/components/ui/button";
-import {labels} from "@/static/labels";
+import {Badge} from "../ui/badge";
+import {Button} from "../ui/button";
+import {labels} from "../../static/labels";
+import {memo} from "react";
 
-export default function Item({item}: {item: IMenuItem}) { 
+const Item = memo(
+  ({item}: {item: IMenuItem}) => { 
   return (
     <Card className="overflow-hidden relative">
         <img src={item.image} className="object-cover h-52 w-full"/>
@@ -26,4 +28,6 @@ export default function Item({item}: {item: IMenuItem}) {
         </CardFooter>
       </Card>
   );
-}
+});
+
+export default Item;

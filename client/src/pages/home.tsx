@@ -1,4 +1,4 @@
-import Item from "@/components/menu/Item";
+import Item from "../components/menu/Item";
 
 export default function Home() {
   return (
