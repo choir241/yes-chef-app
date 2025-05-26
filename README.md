@@ -71,12 +71,12 @@ MVP Features:
 
 V0
 
-![A dark-themed restaurant management dashboard shows active orders, kitchen predictions, inventory status, and revenue. It conveys an organized, efficient tone.](./client/app/assets/readme/v0Design.gif)
+![A dark-themed restaurant management dashboard shows active orders, kitchen predictions, inventory status, and revenue. It conveys an organized, efficient tone.](./client/src/assets/readme/v0Design.gif)
 
 Lovable
 
 ![A Restaurant Manager app interface displaying a menu section with tabs for different food categories. Images of dishes like crispy calamari and salmon are visible under menu selections. The tone is professional and organized.
-](./client/app/assets/readme/lovableDesign.gif)
+](./client/src/assets/readme/lovableDesign.gif)
 
 ## File Organization
 
@@ -120,13 +120,13 @@ export interface IMenuItem {
 Menu Item card component
 
 ### Design
-![A menu card for a Classic Burger priced at $12.99, featuring a juicy beef patty, lettuce, tomato, and special sauce. Includes add to cart button.](./client/app/assets/readme/menuCardDesign.png)
+![A menu card for a Classic Burger priced at $12.99, featuring a juicy beef patty, lettuce, tomato, and special sauce. Includes add to cart button.](./client/src/assets/readme/menuCardDesign.png)
 
 ### Color
-![Close-up of three bruschetta slices on a wooden board, topped with tomatoes, olives, basil, and parsley. Price: $8.99. Button: "Add to Order."](./client/app/assets/readme/menuCardColor.png)
+![Close-up of three bruschetta slices on a wooden board, topped with tomatoes, olives, basil, and parsley. Price: $8.99. Button: "Add to Order."](./client/src/assets/readme/menuCardColor.png)
 
 ### Current
-![Three anime characters in dynamic poses, surrounded by fiery effects. Below, a "Classic Burger" description and an "Add to Order" button.](./client/app/assets/readme/menuCard.png)
+![Three anime characters in dynamic poses, surrounded by fiery effects. Below, a "Classic Burger" description and an "Add to Order" button.](./client/src/assets/readme/menuCard.png)
 
 ## Hooks
 
