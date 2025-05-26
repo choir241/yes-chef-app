@@ -81,23 +81,23 @@ Lovable
 ## File Organization
 
 - `client`
-    - `app`
-        - `components`
-            - `menu`
-                - `MenuInterfaces.ts`
-                - `Item.tsx`
-            - `ui`
-                - `button.tsx`
-                - `card.tsx`
-                - `badge.tsx`
-        - `static`
-            - `labels.ts`
-        - `pages`
-            - `home.tsx`
-        - `assets`
-            - `readme`
-        - `routes.ts`
-        - `root.tsx`
+  - `app`
+    - `components`
+      - `menu`
+        - `MenuInterfaces.ts`
+        - `Item.tsx`
+      - `ui`
+        - `button.tsx`
+        - `card.tsx`
+        - `badge.tsx`
+    - `static`
+      - `labels.ts`
+    - `pages`
+      - `home.tsx`
+    - `assets`
+      - `readme`
+    - `routes.ts`
+    - `root.tsx`
 
 ## Interfaces
 
@@ -107,11 +107,11 @@ Located in `components/menu/MenuInterfaces.ts`
 
 ```typescript
 export interface IMenuItem {
-    name: string;
-    category: string;
-    price: number;
-    description: string;
-    image: string;
+  name: string;
+  category: string;
+  price: number;
+  description: string;
+  image: string;
 }
 ```
 
@@ -120,13 +120,30 @@ export interface IMenuItem {
 Menu Item card component
 
 ### Design
+
 ![A menu card for a Classic Burger priced at $12.99, featuring a juicy beef patty, lettuce, tomato, and special sauce. Includes add to cart button.](./client/src/assets/readme/menuCardDesign.png)
 
 ### Color
+
 ![Close-up of three bruschetta slices on a wooden board, topped with tomatoes, olives, basil, and parsley. Price: $8.99. Button: "Add to Order."](./client/src/assets/readme/menuCardColor.png)
 
 ### Current
+
 ![Three anime characters in dynamic poses, surrounded by fiery effects. Below, a "Classic Burger" description and an "Add to Order" button.](./client/src/assets/readme/menuCard.png)
+
+Category component
+
+### Design
+
+![Menu bar with tabs labeled All Items, Appetizers, Main Courses, Sides, Desserts, and Drinks. The All Items tab is highlighted in white text.](./client/src/assets/readme/categoryDesign.png)
+
+### Color
+
+![Navigation menu with four options: 'Menu & Orders' highlighted in coral, followed by 'Kitchen,' 'Inventory,' and 'Profitability' in black text.](./client/src/assets/readme/categoryColor.png)
+
+### Current
+
+![A menu interface showing a Caesar Salad with romaine, cheese, and croutons for $9.99, plus Garlic Bread and Bruschetta options labeled as appetizers.](./client/src/assets/readme/category.png)
 
 ## Hooks
 

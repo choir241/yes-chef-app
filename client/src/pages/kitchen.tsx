@@ -1,7 +1,7 @@
-export default function Kitchen(){
-    return(
+export default function Kitchen() {
+  return (
     <>
-    <h1>Kitchen</h1>
+      <h1>Kitchen</h1>
     </>
-    )
+  );
 }
