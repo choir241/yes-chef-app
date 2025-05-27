@@ -15,7 +15,7 @@ const Item = memo(({ item }: { item: IMenuItem }) => {
           <CardTitle className="font-semibold text-lg">{item.name}</CardTitle>
           <span className="font-bold">{`$${item.price}`}</span>
         </div>
-        <p className="text-sm text-muted-foreground">{item.description}</p>
+        <p className="text-sm text-muted-foreground min-h-10">{item.description}</p>
       </CardContent>
       <CardFooter className="pb-4 flex justify-end">
         <Button>{labels.menu.addToOrder}</Button>
