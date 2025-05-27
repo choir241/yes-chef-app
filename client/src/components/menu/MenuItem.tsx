@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { labels } from "../../static/labels";
 import { memo } from "react";
 
-const Item = memo(({ item }: { item: IMenuItem }) => {
+const MenuItem = memo(({ item }: { item: IMenuItem }) => {
   return (
     <Card className="overflow-hidden relative">
       <img src={item.image} className="object-cover h-52 w-full" />
@@ -15,7 +15,9 @@ const Item = memo(({ item }: { item: IMenuItem }) => {
           <CardTitle className="font-semibold text-lg">{item.name}</CardTitle>
           <span className="font-bold">{`$${item.price}`}</span>
         </div>
-        <p className="text-sm text-muted-foreground min-h-10">{item.description}</p>
+        <p className="text-sm text-muted-foreground min-h-10">
+          {item.description}
+        </p>
       </CardContent>
       <CardFooter className="pb-4 flex justify-end">
         <Button>{labels.menu.addToOrder}</Button>
@@ -24,4 +26,4 @@ const Item = memo(({ item }: { item: IMenuItem }) => {
   );
 });
 
-export default Item;
+export default MenuItem;

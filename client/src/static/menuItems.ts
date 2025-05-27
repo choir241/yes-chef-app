@@ -4,7 +4,8 @@ export const menuItems = [
     name: "Caesar Salad",
     category: "Appetizers",
     price: 9.99,
-    description: "Romaine lettuce, parmesan cheese, croutons, and Caesar dressing.",
+    description:
+      "Romaine lettuce, parmesan cheese, croutons, and Caesar dressing.",
     image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
   },
   {
@@ -62,7 +63,8 @@ export const menuItems = [
     name: "Chicken Alfredo",
     category: "Main Courses",
     price: 15.99,
-    description: "Grilled chicken breast with creamy Alfredo sauce and fettuccine.",
+    description:
+      "Grilled chicken breast with creamy Alfredo sauce and fettuccine.",
     image: "https://images.unsplash.com/photo-1563303632-75989405d76d",
   },
   {
@@ -76,7 +78,8 @@ export const menuItems = [
     name: "Caesar Wrap",
     category: "Main Courses",
     price: 11.99,
-    description: "Grilled chicken, romaine lettuce, parmesan cheese, and Caesar dressing in a tortilla.",
+    description:
+      "Grilled chicken, romaine lettuce, parmesan cheese, and Caesar dressing in a tortilla.",
     image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
   },
   {
@@ -169,7 +172,8 @@ export const menuItems = [
     name: "Tiramisu",
     category: "Desserts",
     price: 9.99,
-    description: "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone cheese.",
+    description:
+      "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone cheese.",
     image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587",
   },
   {
@@ -206,5 +210,5 @@ export const menuItems = [
     price: 8.99,
     description: "Light and airy chocolate mousse with berries.",
     image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587",
-  }
+  },
 ];

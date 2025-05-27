@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
 const Home = lazy(() => import("./pages/home"));
-const Kitchen = lazy(() => import("./pages/kitchen"));
+const Cart = lazy(() => import("./pages/cart"));
 
-export { Home, Kitchen };
+export { Home, Cart };

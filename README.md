@@ -145,6 +145,21 @@ Category component
 
 ![A menu interface showing a Caesar Salad with romaine, cheese, and croutons for $9.99, plus Garlic Bread and Bruschetta options labeled as appetizers.](./client/src/assets/readme/category.png)
 
+Cart component
+
+### Design
+
+!["Digital food order cart with items: 2 Classic Burgers, 1 French Fries, 2 Iced Teas, special instructions added. Order Summary shows total as $39.91 with a button to 'Send to Kitchen'."](./client/src/assets/readme/cartDesign.png)
+
+### Color
+
+![Order form for a soft drink priced at $2.99, with quantity buttons and an input for special instructions. Total is $2.99. "Place Order" button visible.](./client/src/assets/readme/cartColor.png)
+
+### Current
+
+![Cart summary on a webpage with 12 Caesar Salads for $119.88 and 2 Classic Burgers for $25.98. Total order: $211.62. Checkout button visible.](./client/src/assets/readme/cart.png)
+
+
 ## Hooks
 
 ## Reducers

@@ -3,6 +3,12 @@ export const labels = {
     addToOrder: "Add to Order",
   },
   categories: {
-    categoryList: ["All Items", "Appetizers", "Main Courses", "Desserts", "Beverages"],
+    categoryList: [
+      "All Items",
+      "Appetizers",
+      "Main Courses",
+      "Desserts",
+      "Beverages",
+    ],
   },
 };
