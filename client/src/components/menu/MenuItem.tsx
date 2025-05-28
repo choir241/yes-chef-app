@@ -4,10 +4,9 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { labels } from "../../static/labels";
 import { memo } from "react";
-import { addToCart } from "../../hooks/cart/addToCart";
+import { addToCart } from "@/hooks/cart/addToCart";
 
-const MenuItem = memo(({item}:{item: IMenuItem}) => {
-
+const MenuItem = memo(({ item }: { item: IMenuItem }) => {
   return (
     <Card className="overflow-hidden relative">
       <img src={item.image} className="object-cover h-52 w-full" />
@@ -22,9 +21,7 @@ const MenuItem = memo(({item}:{item: IMenuItem}) => {
         </p>
       </CardContent>
       <CardFooter className="pb-4 flex justify-end">
-        <Button onClick={() => {
-          addToCart({newCartItem: {...item, quantity: 1}})
-        }}>{labels.menu.addToOrder}</Button>
+        <Button onClick = {()=>addToCart({newCartItem: {...item, quantity: 1}})}>{labels.menu.addToOrder}</Button>
       </CardFooter>
     </Card>
   );
