@@ -159,6 +159,7 @@ Cart component
 
 ![Cart summary on a webpage with 12 Caesar Salads for $119.88 and 2 Classic Burgers for $25.98. Total order: $211.62. Checkout button visible.](./client/src/assets/readme/cart.png)
 
+![Cart interface showing Caesar Salad and Classic Burger orders. Quantities, prices, and an Order Summary with checkout button are displayed.](./client/src/assets/readme/cartSummary.gif)
 
 ## Hooks
 
