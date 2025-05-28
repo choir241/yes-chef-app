@@ -84,16 +84,26 @@ Lovable
   - `app`
     - `components`
       - `menu`
+        - `MenuCategory.tsx`
         - `MenuInterfaces.ts`
         - `Item.tsx`
+      - `cart`
+        - `CartInterfaces.ts`
+        - `CartItem.tsx`
+        - `OrderSummary.tsx`
       - `ui`
         - `button.tsx`
         - `card.tsx`
         - `badge.tsx`
+    - `hooks`
+      - `cart`
+        - `addToCart.ts`
     - `static`
       - `labels.ts`
+      - `menuItems.ts`
     - `pages`
       - `home.tsx`
+      - `cart.tsx`
     - `assets`
       - `readme`
     - `routes.ts`
@@ -112,6 +122,19 @@ export interface IMenuItem {
   price: number;
   description: string;
   image: string;
+}
+```
+
+### Cart Item
+
+Located in `components/cart/CartInterfaces.ts`
+
+```typescript
+export interface ICartItem {
+  name: string;
+  price: number;
+  quantity: number;
+  instructions?: string;
 }
 ```
 
@@ -163,20 +186,46 @@ Cart component
 
 ## Hooks
 
+`addToCart.ts`
+
+event handler for adding a menu item to the cart by making a POST request to the backend and creating a new document in the database collection
+
 ## Reducers
 
 ## Backend Routes
 
+GET /cart
+
+returns a json array of cart items consisting of the name, price, quantity, and instructions of the menu item
+
+POST /addToCart
+
+creates a new document in the cart collection with the name, price, quantity, and instructions of the menu item
+
 ## Database Design
+
+- `restaurant`
+  - `cart`
+    - name
+    - price
+    - quantity
+    - instructions
 
 ## Dependencies
 
 - Utilty-First CSS framework: Tailwind CSS
 - UI Component Library: Shadcn UI
 - Router: React Router
+- Database: MongoDB
+- Cors: cors
+- Data fetching: Tanstack Query
+- Environment variables: dotenv
 
 ## Tech Stacks
 
 - Frontend: Typescript
 - Library: React
 - Build tool: Vite
+- Backend: Node.js
+- Backend Framework: Express
+- Backend Language: Typescript

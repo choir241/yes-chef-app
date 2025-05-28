@@ -20,12 +20,13 @@ const MenuCategory = memo(() => {
     <Tabs defaultValue={labels.categories.categoryList[0]}>
       <TabsList className="mt-4">
         {labels.categories.categoryList.map((category) => (
-          <TabsTrigger value={category}>{category}</TabsTrigger>
+          <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
         ))}
       </TabsList>
       {labels.categories.categoryList.map((category) => {
         return (
           <TabsContent
+            key={category}
             value={category}
             className="p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3"
           >

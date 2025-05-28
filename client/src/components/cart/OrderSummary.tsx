@@ -6,42 +6,28 @@ import {
   CardFooter,
 } from "../ui/card";
 import { Button } from "../ui/button";
+import type { ICartItem } from "./CartInterfaces";
+import { useQuery } from "@tanstack/react-query";
+import { memo } from "react";
 
-export const mockCart = [
-  {
-    name: "Caesar Salad",
-    price: 9.99,
-    quantity: 12,
-    instructions: "No Dressing",
-  },
-  {
-    name: "Classic Burger",
-    price: 12.99,
-    quantity: 2,
-    instructions: "Extra cheese",
-  },
-  {
-    name: "Margherita Pizza",
-    price: 14.99,
-    quantity: 1,
-    instructions: "Extra cheese",
-  },
-  {
-    name: "Garlic Bread",
-    price: 6.99,
-    quantity: 4,
-    instructions: "Extra garlic",
-  },
-  {
-    name: "Sparkling Water",
-    price: 2.99,
-    quantity: 3,
-    instructions: "Lemon instead of lime",
-  },
-];
-export default function OrderSummary() {
-  const subtotal = mockCart.reduce(
-    (total, item) => total + item.price * item.quantity,
+const OrderSummary = memo(() => {
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ['repoData'],
+    queryFn: () =>
+      fetch('http://localhost:8000/cart').then((res) =>
+        res.json(),
+      ),
+  });
+
+  if(isPending){
+    return "Loading cart..."
+  }else if(error){
+    return "Error loading cart: " + error
+  }
+
+  const subtotal = data.reduce(
+    (total: number, item: ICartItem) => total + item.price * item.quantity,
     0,
   );
   const tax = Number((subtotal * 0.07).toFixed(2));
@@ -71,4 +57,6 @@ export default function OrderSummary() {
       </CardFooter>
     </Card>
   );
-}
+});
+
+export default OrderSummary;
