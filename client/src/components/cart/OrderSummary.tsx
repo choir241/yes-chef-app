@@ -11,24 +11,25 @@ import { useQuery } from "@tanstack/react-query";
 import { memo } from "react";
 
 const OrderSummary = memo(() => {
-
   const { isPending, error, data } = useQuery({
-    queryKey: ['repoData'],
+    queryKey: ["repoData"],
     queryFn: () =>
-      fetch('http://localhost:8000/cart').then((res) =>
-        res.json(),
-      ),
+      fetch("http://localhost:8000/cart").then((res) => res.json()),
   });
 
-  if(isPending){
-    return "Loading cart..."
-  }else if(error){
-    return "Error loading cart: " + error
+  if (isPending) {
+    return "Loading cart...";
+  } else if (error) {
+    return "Error loading cart: " + error;
   }
 
-  const subtotal = data.reduce(
-    (total: number, item: ICartItem) => total + item.price * item.quantity,
-    0,
+  const subtotal = Number(
+    data
+      .reduce(
+        (total: number, item: ICartItem) => total + item.price * item.quantity,
+        0,
+      )
+      .toFixed(2),
   );
   const tax = Number((subtotal * 0.07).toFixed(2));
   const total = Number((subtotal + tax).toFixed(2));

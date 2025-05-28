@@ -21,7 +21,11 @@ const MenuItem = memo(({ item }: { item: IMenuItem }) => {
         </p>
       </CardContent>
       <CardFooter className="pb-4 flex justify-end">
-        <Button onClick = {()=>addToCart({newCartItem: {...item, quantity: 1}})}>{labels.menu.addToOrder}</Button>
+        <Button
+          onClick={() => addToCart({ newCartItem: { ...item, quantity: 1 } })}
+        >
+          {labels.menu.addToOrder}
+        </Button>
       </CardFooter>
     </Card>
   );

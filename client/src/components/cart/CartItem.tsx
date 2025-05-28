@@ -11,10 +11,13 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Textarea } from "../ui/textarea";
+import { useEditCart } from "@/hooks/cart/editCart";
 
 const CartItem = memo(({ item }: { item: ICartItem }) => {
   const [isSpecialInstructionsVisible, setIsSpecialInstructionsVisible] =
     useState(false);
+
+  const updateCartItem = useEditCart();
 
   return (
     <Card className="overflow-hidden relative mb-4">
@@ -22,26 +25,39 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
         <CardTitle className="font-semibold text-lg">{item.name}</CardTitle>
         <FaRegTrashAlt />
       </CardHeader>
+      {updateCartItem.isPending ? (
+            <CardContent>
+              <span className="text-muted-foreground">Updating...</span>
+            </CardContent>
+          ) : (
       <CardContent className="flex justify-between items-start">
         <section className="flex gap-2">
-          <Button className="h-8 w-8" variant="outline">
-            {"-"}
-          </Button>
-          <Input
-            type="number"
-            defaultValue={item.quantity}
-            className="w-16 h-8 bg-[#f6f4ee]"
-          />
-          <Button className="h-8 w-8" variant="outline">
-            {"+"}
-          </Button>
+            <>
+              <Button className="h-8 w-8" variant="outline">
+                {"-"}
+              </Button>
+              <Input
+                type="number"
+                defaultValue={item.quantity}
+                onChange={(e) => {
+                  updateCartItem.mutate({
+                    id: item._id,
+                    newCartItem: { ...item, quantity: Number(e.target.value) },
+                  });
+                }}
+                className="w-16 h-8 bg-[#f6f4ee]"
+              />
+              <Button className="h-8 w-8" variant="outline">
+                {"+"}
+              </Button>
+            </>
         </section>
-
         <div className="flex flex-col items-end">
           <span className="font-bold">{`$${item.price * item.quantity}`}</span>
           <span className="text-sm text-muted-foreground">{`$${item.price} each`}</span>
         </div>
       </CardContent>
+      )}
       <CardFooter className="mb-6 flex flex-col items-start">
         {isSpecialInstructionsVisible ? (
           <span
