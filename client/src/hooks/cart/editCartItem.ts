@@ -2,8 +2,6 @@ import type { ICartItem } from "@/components/cart/CartInterfaces";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export { useCartData } from "./useCartData";
-
 export function useEditCart() {
   const queryClient = useQueryClient();
 

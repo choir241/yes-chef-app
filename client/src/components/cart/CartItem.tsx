@@ -10,7 +10,8 @@ import type { ICartItem } from "./CartInterfaces";
 import { Button } from "../ui/button";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Textarea } from "../ui/textarea";
-import { useEditCart } from "@/hooks/cart/editCart";
+import { useEditCart } from "@/hooks/cart/editCartItem";
+import { useDeleteCartItem } from "@/hooks/cart/deleteCartItem";
 
 const CartItem = memo(({ item }: { item: ICartItem }) => {
   const [isInstructionsVisible, setIsInstructionsVisible] = useState(false);
@@ -18,6 +19,7 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
   const [localInstructions, setLocalInstructions] = useState(item.instructions);
 
   const updateCartItem = useEditCart();
+  const deleteCartItem = useDeleteCartItem();
 
   const handleQuantityChange = (newQuantity: number) => {
     setLocalQuantity(newQuantity);
@@ -46,7 +48,7 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
         />
       );
     }
-    if (!isInstructionsVisible) {
+    else if (!isInstructionsVisible) {
       return (
         <span
           className="hover:underline cursor-pointer"
@@ -87,7 +89,9 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
     <Card className="overflow-hidden relative mb-4">
       <CardHeader className="flex items-center justify-between pt-4">
         <CardTitle className="font-semibold text-lg">{item.name}</CardTitle>
-        <FaRegTrashAlt />
+        <FaRegTrashAlt
+        className="cursor-pointer hover:opacity-40"
+        onClick={() => deleteCartItem.mutate({ id: item._id })} />
       </CardHeader>
       <CardContent className="flex justify-between items-start">
         <section className="flex gap-2">
