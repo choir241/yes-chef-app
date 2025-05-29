@@ -2,6 +2,7 @@ import CartItem from "@/components/cart/CartItem";
 import OrderSummary from "@/components/cart/OrderSummary";
 import type { ICartItem } from "@/components/cart/CartInterfaces";
 import { useQuery } from "@tanstack/react-query";
+import { useCallback } from "react";
 
 export default function Cart() {
   const { isPending, error, data } = useQuery({
@@ -10,7 +11,7 @@ export default function Cart() {
       fetch("http://localhost:8000/cart").then((res) => res.json()),
   });
 
-  function renderCart() {
+  const renderCart = useCallback(() => {
     if (isPending) {
       return "Loading cart...";
     } else if (error) {
@@ -20,7 +21,7 @@ export default function Cart() {
         <CartItem key={item.name} item={item} />
       ));
     }
-  }
+  }, [isPending, error, data]);
 
   return (
     <>

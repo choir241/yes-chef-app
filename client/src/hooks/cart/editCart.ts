@@ -8,10 +8,16 @@ export function useEditCart() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({ id, newCartItem }: { id: string; newCartItem: ICartItem }) => {
+    mutationFn: async ({
+      id,
+      newCartItem,
+    }: {
+      id: string;
+      newCartItem: ICartItem;
+    }) => {
       const response = await axios.patch(
         `http://localhost:8000/updateCart/${id}`,
-        newCartItem
+        newCartItem,
       );
       return response;
     },

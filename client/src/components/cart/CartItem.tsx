@@ -8,16 +8,80 @@ import {
 import { memo, useState } from "react";
 import type { ICartItem } from "./CartInterfaces";
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Textarea } from "../ui/textarea";
 import { useEditCart } from "@/hooks/cart/editCart";
 
 const CartItem = memo(({ item }: { item: ICartItem }) => {
-  const [isSpecialInstructionsVisible, setIsSpecialInstructionsVisible] =
-    useState(false);
+  const [isInstructionsVisible, setIsInstructionsVisible] = useState(false);
+  const [localQuantity, setLocalQuantity] = useState(item.quantity);
+  const [localInstructions, setLocalInstructions] = useState(item.instructions);
 
   const updateCartItem = useEditCart();
+
+  const handleQuantityChange = (newQuantity: number) => {
+    setLocalQuantity(newQuantity);
+    updateCartItem.mutate({
+      id: item._id,
+      newCartItem: { ...item, quantity: newQuantity },
+    });
+  };
+
+  function renderInstructions() {
+    if (localInstructions) {
+      return (
+        <Textarea
+          value={localInstructions}
+          onChange={(e) => {
+            updateCartItem.mutate({
+              id: item._id,
+              newCartItem: { ...item, instructions: e.target.value },
+            });
+            setLocalInstructions(e.target.value);
+          }}
+          placeholder="Special instructions (e.g. gluten-free, preferences)"
+          rows={8}
+          cols={20}
+          className="resize-none mt-2 bg-[#f6f4ee]"
+        />
+      );
+    }
+    if (!isInstructionsVisible) {
+      return (
+        <span
+          className="hover:underline cursor-pointer"
+          onClick={() => setIsInstructionsVisible(true)}
+        >
+          Add instructions
+        </span>
+      );
+    } else {
+      return (
+        <>
+          <span
+            className="hover:underline cursor-pointer"
+            onClick={() => setIsInstructionsVisible(false)}
+          >
+            Hide instructions
+          </span>
+          <Textarea
+            value={localInstructions}
+            onChange={(e) => {
+              updateCartItem.mutate({
+                id: item._id,
+                newCartItem: { ...item, instructions: e.target.value },
+              });
+              setLocalInstructions(e.target.value);
+            }}
+            placeholder="Special instructions (e.g. gluten-free, preferences)"
+            rows={8}
+            cols={20}
+            className="resize-none mt-2 bg-[#f6f4ee]"
+          />
+        </>
+      );
+    }
+  }
 
   return (
     <Card className="overflow-hidden relative mb-4">
@@ -25,63 +89,35 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
         <CardTitle className="font-semibold text-lg">{item.name}</CardTitle>
         <FaRegTrashAlt />
       </CardHeader>
-      {updateCartItem.isPending ? (
-            <CardContent>
-              <span className="text-muted-foreground">Updating...</span>
-            </CardContent>
-          ) : (
       <CardContent className="flex justify-between items-start">
         <section className="flex gap-2">
-            <>
-              <Button className="h-8 w-8" variant="outline">
-                {"-"}
-              </Button>
-              <Input
-                type="number"
-                defaultValue={item.quantity}
-                onChange={(e) => {
-                  updateCartItem.mutate({
-                    id: item._id,
-                    newCartItem: { ...item, quantity: Number(e.target.value) },
-                  });
-                }}
-                className="w-16 h-8 bg-[#f6f4ee]"
-              />
-              <Button className="h-8 w-8" variant="outline">
-                {"+"}
-              </Button>
-            </>
+          <>
+            <Button
+              className="h-8 w-8"
+              variant="outline"
+              onClick={() => handleQuantityChange(localQuantity - 1)}
+            >
+              {"-"}
+            </Button>
+            <span className="flex items-end w-16 h-8 bg-[#f6f4ee] rounded-md border px-3 py-1 text-base shadow-xs md:text-sm">
+              {localQuantity}
+            </span>
+            <Button
+              className="h-8 w-8"
+              variant="outline"
+              onClick={() => handleQuantityChange(localQuantity + 1)}
+            >
+              {"+"}
+            </Button>
+          </>
         </section>
         <div className="flex flex-col items-end">
-          <span className="font-bold">{`$${item.price * item.quantity}`}</span>
+          <span className="font-bold">{`$${item.price * localQuantity}`}</span>
           <span className="text-sm text-muted-foreground">{`$${item.price} each`}</span>
         </div>
       </CardContent>
-      )}
       <CardFooter className="mb-6 flex flex-col items-start">
-        {isSpecialInstructionsVisible ? (
-          <span
-            className="hover:underline cursor-pointer"
-            onClick={() => setIsSpecialInstructionsVisible(false)}
-          >
-            Hide special instructions
-          </span>
-        ) : (
-          <span
-            className="hover:underline cursor-pointer"
-            onClick={() => setIsSpecialInstructionsVisible(true)}
-          >
-            Add special instructions
-          </span>
-        )}
-        {isSpecialInstructionsVisible && (
-          <Textarea
-            placeholder="Special instructions (e.g. gluten-free, preferences)"
-            rows={8}
-            cols={20}
-            className="resize-none mt-2 bg-[#f6f4ee]"
-          />
-        )}
+        {renderInstructions()}
       </CardFooter>
     </Card>
   );
