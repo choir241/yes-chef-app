@@ -16,7 +16,7 @@ export default function ItemTicket({ ticket, tickets, setTickets }: { ticket: IT
 
     function handleTicketItemStatus({updatedItem}:{updatedItem: ICartTicket}){
         const updatedTicketItems = ticket.items.map((item) => {
-            if(item._id === updatedItem._id && updatedItem.status === "in progress" && item.name === updatedItem.name){
+            if(item._id === updatedItem._id && updatedItem.status === "in progress"){
                 return {...item, status: "completed"}
             }
             return item;
