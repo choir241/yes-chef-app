@@ -1,6 +1,8 @@
 import ItemTicket from "../components/kitchen/Ticket";
+import { useState } from "react";
+import { type ITicket } from "../components/kitchen/TicketInterfaces";
 
-export const mockTickets = [
+export const mockTickets: ITicket[] = [
   {
     _id: "1",
     ticketNum: 1,
@@ -196,11 +198,14 @@ export const mockTickets = [
 ];
 
 export default function Kitchen(){
+
+  const [tickets, setTickets] = useState(mockTickets);
+
   return(
     <>
     <section className="p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-    {mockTickets.map((ticket) => (
-        <ItemTicket key={ticket._id} ticket={ticket} />
+    {tickets.map((ticket) => (
+        <ItemTicket key={ticket._id} ticket={ticket} tickets={tickets} setTickets={setTickets} />
     ))}
     </section>
     </>

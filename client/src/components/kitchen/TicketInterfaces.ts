@@ -1,6 +1,6 @@
 import type { ICartItem } from "../cart/CartInterfaces";
 
-interface ICartTicket extends ICartItem {
+export interface ICartTicket extends ICartItem {
     status: string;    
 }
 

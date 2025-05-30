@@ -9,8 +9,26 @@ import type { ITicket } from "./TicketInterfaces";
 import { Badge } from "../ui/badge";
 import { CiTimer } from "react-icons/ci";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import type { ICartTicket } from "./TicketInterfaces";
 
-export default function ItemTicket({ ticket }: { ticket: ITicket }) {
+export default function ItemTicket({ ticket, tickets, setTickets }: { ticket: ITicket, tickets: ITicket[], setTickets: (e: ITicket[]) => void }) {
+
+    function handleTicketItemStatus({updatedItem}:{updatedItem: ICartTicket}){
+        const updatedTicketItems = ticket.items.map((item) => {
+            if(item._id === updatedItem._id && updatedItem.status === "in progress" && item.name === updatedItem.name){
+                return {...item, status: "completed"}
+            }
+            return item;
+        })
+        const updatedTickets = tickets.map((currentTicket)=>{
+            if(currentTicket._id === ticket._id){
+                return {...currentTicket, items: updatedTicketItems}
+            }
+            return currentTicket;
+        })
+        setTickets(updatedTickets)
+    }
+
     return (
         <Card>
             <CardHeader className="flex items-center justify-between">
@@ -18,15 +36,19 @@ export default function ItemTicket({ ticket }: { ticket: ITicket }) {
                     <CardTitle>Ticket #{ticket.ticketNum}</CardTitle>
                     <span>Ordered at {new Date(ticket.orderTime).toLocaleTimeString(navigator.language, {hour: "2-digit", minute: "2-digit"})}</span>
                 </div>
-                <Badge variant={ticket.status === "in progress" ? "default" : "destructive"}><CiTimer />{ticket.status}</Badge>
+                <Badge variant={ticket.status === "in progress" ? "default" : "outline"}><CiTimer />{ticket.status}</Badge>
             </CardHeader>
             <CardContent>
                 {ticket.items.map((item) => (
-                    <div key={item._id} className="p-2 flex items-center justify-between">
-                        {item.status === "completed" ? <IoMdCheckmarkCircleOutline className="text-green-500" /> : <IoMdCheckmarkCircleOutline />}
-                        <section className="flex flex-col">
-                            <span>{item.name}</span>
-                            <span className="text-xs text-muted-foreground">{item.instructions}</span>
+                    <div 
+                    onClick={() => {handleTicketItemStatus({updatedItem: item})}}
+                    key={item._id} className={item.status === "completed" ? "bg-[#f0f2f4] rounded my-2 p-2 flex items-center justify-between" : "cursor-pointer my-2 p-2 flex items-center justify-between"}>
+                        <section className="flex items-center gap-2">
+                        {item.status === "completed" ? <IoMdCheckmarkCircleOutline className="text-green-500" size={24} /> : <IoMdCheckmarkCircleOutline size={24} />}
+                            <div className="flex items-start flex-col px-2">
+                                <span className={item.status === "completed" ? "line-through" : ""}>{item.name}</span>
+                                <span className={`text-xs text-muted-foreground ${item.status === "completed" ? "line-through" : ""}`}>{item.instructions}</span>
+                            </div>
                         </section>
                         <p>x{item.quantity}</p>
 
