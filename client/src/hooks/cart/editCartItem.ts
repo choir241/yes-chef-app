@@ -14,7 +14,7 @@ export function useEditCart() {
       newCartItem: ICartItem;
     }) => {
       const response = await axios.patch(
-        `http://localhost:8000/updateCart/${id}`,
+        `${import.meta.env.VITE_SERVER_URL}/updateCart/${id}`,
         newCartItem,
       );
       return response;

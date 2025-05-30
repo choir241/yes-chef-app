@@ -14,7 +14,7 @@ export async function addToCart({
 }) {
   try {
     const response = await axios.post(
-      import.meta.env.VITE_SERVER_URL + "/addToCart",
+      `${import.meta.env.VITE_SERVER_URL} + /addToCart`,
       newCartItem,
     );
     return response.data;

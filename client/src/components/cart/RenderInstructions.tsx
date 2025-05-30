@@ -1,4 +1,5 @@
 import { Textarea } from "../ui/textarea";
+import { labels } from "../../static/labels";
 
 export function renderInstructions({
   localInstructions,
@@ -26,7 +27,7 @@ export function renderInstructions({
           });
           setLocalInstructions(e.target.value);
         }}
-        placeholder="Special instructions (e.g. gluten-free, preferences)"
+        placeholder={labels.instructions.placeholder}
         rows={8}
         cols={20}
         className="resize-none mt-2 bg-[#f6f4ee]"
@@ -38,7 +39,7 @@ export function renderInstructions({
         className="hover:underline cursor-pointer"
         onClick={() => setIsInstructionsVisible(true)}
       >
-        Add instructions
+        {labels.instructions.addInstructions}
       </span>
     );
   } else {
@@ -48,7 +49,7 @@ export function renderInstructions({
           className="hover:underline cursor-pointer"
           onClick={() => setIsInstructionsVisible(false)}
         >
-          Hide instructions
+          {labels.instructions.hideInstructions}
         </span>
         <Textarea
           value={localInstructions}
@@ -59,7 +60,7 @@ export function renderInstructions({
             });
             setLocalInstructions(e.target.value);
           }}
-          placeholder="Special instructions (e.g. gluten-free, preferences)"
+          placeholder={labels.instructions.placeholder}
           rows={8}
           cols={20}
           className="resize-none mt-2 bg-[#f6f4ee]"

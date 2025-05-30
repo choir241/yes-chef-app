@@ -1,4 +1,7 @@
 export const labels = {
+  cart:{
+    cart: "Cart"
+  },
   menu: {
     addToOrder: "Add to Order",
   },
@@ -10,5 +13,19 @@ export const labels = {
       "Desserts",
       "Beverages",
     ],
+  },
+  instructions: {
+    hideInstructions: "Hide instructions",
+    addInstructions: "Add instructions",
+    placeholder: "Special instructions (e.g. gluten-free, preferences)",
+  },
+  OrderSummary: {
+    loading: "Loading cart...",
+    error: "Error loading cart: ",
+    orderSummary: "Order Summary",
+    subtotal: "Subtotal",
+    tax: "Tax",
+    total: "Total",
+    checkout: "Checkout",
   },
 };

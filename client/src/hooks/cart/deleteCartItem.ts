@@ -7,7 +7,7 @@ export function useDeleteCartItem() {
   return useMutation({
     mutationFn: async ({ id }: { id: string }) => {
       const response = await axios.delete(
-        `http://localhost:8000/deleteCart/${id}`,
+        `${import.meta.env.VITE_SERVER_URL}/deleteCart/${id}`,
       );
       return response;
     },
