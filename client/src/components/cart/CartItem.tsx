@@ -9,9 +9,9 @@ import { memo, useState } from "react";
 import type { ICartItem } from "./CartInterfaces";
 import { Button } from "../ui/button";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { Textarea } from "../ui/textarea";
 import { useEditCart } from "@/hooks/cart/editCartItem";
 import { useDeleteCartItem } from "@/hooks/cart/deleteCartItem";
+import { renderInstructions } from "./RenderInstructions";
 
 const CartItem = memo(({ item }: { item: ICartItem }) => {
   const [isInstructionsVisible, setIsInstructionsVisible] = useState(false);
@@ -29,69 +29,14 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
     });
   };
 
-  function renderInstructions() {
-    if (localInstructions) {
-      return (
-        <Textarea
-          value={localInstructions}
-          onChange={(e) => {
-            updateCartItem.mutate({
-              id: item._id,
-              newCartItem: { ...item, instructions: e.target.value },
-            });
-            setLocalInstructions(e.target.value);
-          }}
-          placeholder="Special instructions (e.g. gluten-free, preferences)"
-          rows={8}
-          cols={20}
-          className="resize-none mt-2 bg-[#f6f4ee]"
-        />
-      );
-    }
-    else if (!isInstructionsVisible) {
-      return (
-        <span
-          className="hover:underline cursor-pointer"
-          onClick={() => setIsInstructionsVisible(true)}
-        >
-          Add instructions
-        </span>
-      );
-    } else {
-      return (
-        <>
-          <span
-            className="hover:underline cursor-pointer"
-            onClick={() => setIsInstructionsVisible(false)}
-          >
-            Hide instructions
-          </span>
-          <Textarea
-            value={localInstructions}
-            onChange={(e) => {
-              updateCartItem.mutate({
-                id: item._id,
-                newCartItem: { ...item, instructions: e.target.value },
-              });
-              setLocalInstructions(e.target.value);
-            }}
-            placeholder="Special instructions (e.g. gluten-free, preferences)"
-            rows={8}
-            cols={20}
-            className="resize-none mt-2 bg-[#f6f4ee]"
-          />
-        </>
-      );
-    }
-  }
-
   return (
     <Card className="overflow-hidden relative mb-4">
       <CardHeader className="flex items-center justify-between pt-4">
         <CardTitle className="font-semibold text-lg">{item.name}</CardTitle>
         <FaRegTrashAlt
-        className="cursor-pointer hover:opacity-40"
-        onClick={() => deleteCartItem.mutate({ id: item._id })} />
+          className="cursor-pointer hover:opacity-40"
+          onClick={() => deleteCartItem.mutate({ id: item._id })}
+        />
       </CardHeader>
       <CardContent className="flex justify-between items-start">
         <section className="flex gap-2">
@@ -121,7 +66,14 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
         </div>
       </CardContent>
       <CardFooter className="mb-6 flex flex-col items-start">
-        {renderInstructions()}
+        {renderInstructions({
+          localInstructions,
+          updateCartItem,
+          item,
+          setLocalInstructions,
+          isInstructionsVisible,
+          setIsInstructionsVisible,
+        })}
       </CardFooter>
     </Card>
   );

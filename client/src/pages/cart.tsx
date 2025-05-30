@@ -2,9 +2,9 @@ import CartItem from "@/components/cart/CartItem";
 import OrderSummary from "@/components/cart/OrderSummary";
 import type { ICartItem } from "@/components/cart/CartInterfaces";
 import { useQuery } from "@tanstack/react-query";
-import { useCallback } from "react";
+import { useCallback, memo } from "react";
 
-export default function Cart() {
+const Cart = memo(() => {
   const { isPending, error, data } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>
@@ -23,6 +23,8 @@ export default function Cart() {
     }
   }, [isPending, error, data]);
 
+  console.log(import.meta.env.VITE_SERVER_URL);
+
   return (
     <>
       <h1 className="px-4 py-2 text-2xl font-bold">Cart</h1>
@@ -32,4 +34,6 @@ export default function Cart() {
       </section>
     </>
   );
-}
+});
+
+export default Cart;

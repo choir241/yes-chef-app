@@ -91,13 +91,19 @@ Lovable
         - `CartInterfaces.ts`
         - `CartItem.tsx`
         - `OrderSummary.tsx`
+        - `RenderInstructions.tsx`
       - `ui`
         - `button.tsx`
         - `card.tsx`
         - `badge.tsx`
+        - `textarea.tsx`
+        - `input.tsx`
+        - `tabs.tsx`
     - `hooks`
       - `cart`
         - `addToCart.ts`
+        - `editCartItem.ts`
+        - `deleteCartItem.ts`
     - `static`
       - `labels.ts`
       - `menuItems.ts`
@@ -108,6 +114,14 @@ Lovable
       - `readme`
     - `routes.ts`
     - `root.tsx`
+- `server`
+  - `config`
+    - `db.ts`
+  - `controllers`
+    - `cart.ts`
+  - `routes`
+    - `cart.ts`
+  - `server.ts`
 
 ## Interfaces
 
