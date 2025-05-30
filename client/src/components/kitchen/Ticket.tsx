@@ -10,6 +10,7 @@ import { Badge } from "../ui/badge";
 import { CiTimer } from "react-icons/ci";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import type { ICartTicket } from "./TicketInterfaces";
+import { Button } from "../ui/button";
 
 export default function ItemTicket({ ticket, tickets, setTickets }: { ticket: ITicket, tickets: ITicket[], setTickets: (e: ITicket[]) => void }) {
 
@@ -27,6 +28,40 @@ export default function ItemTicket({ ticket, tickets, setTickets }: { ticket: IT
             return currentTicket;
         })
         setTickets(updatedTickets)
+    }
+
+    function handleTicketStatus(currentTicket: ITicket){
+        if(currentTicket.status === "pending"){
+            const updatedTickets = tickets.map((ticket)=>{
+                if(ticket._id === currentTicket._id){
+                    return {...ticket, status: "in progress"}
+                }
+                return ticket;
+            })
+            setTickets(updatedTickets)
+        }
+        else if(currentTicket.status === "in progress"){
+            const updatedTickets = tickets.map((ticket)=>{
+                if(ticket._id === currentTicket._id){
+                    return {...ticket, status: "completed"}
+                }
+                return ticket;
+            })
+            setTickets(updatedTickets)
+        }
+    }
+
+    function ticketStatus(){
+        if(ticket.status === "pending"){
+            return (
+                <Button variant="outline" onClick={() => {handleTicketStatus(ticket)}} className="w-full">Mark as in progress</Button>
+            )
+        }
+        else if(ticket.status === "in progress"){
+            return (
+                <Button variant="default" onClick={() => {handleTicketStatus(ticket)}} className="w-full">Mark as completed</Button>
+            )
+        }
     }
 
     return (
@@ -55,8 +90,8 @@ export default function ItemTicket({ ticket, tickets, setTickets }: { ticket: IT
                     </div>
                 ))}
             </CardContent>
-            <CardFooter>
-                
+            <CardFooter className="mb-4">
+                {ticketStatus()}
             </CardFooter>
         </Card>
     )
