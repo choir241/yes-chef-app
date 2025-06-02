@@ -1,13 +1,13 @@
 import type { ICartItem } from "../cart/CartInterfaces";
 
 export interface ICartTicket extends ICartItem {
-    status: string;    
+  status: string;
 }
 
 export interface ITicket {
-    _id: string;
-    ticketNum: number;
-    items: ICartTicket[];
-    status: string;
-    orderTime: string;
+  _id: string;
+  ticketNum: number;
+  items: ICartTicket[];
+  status: string;
+  orderTime: string;
 }

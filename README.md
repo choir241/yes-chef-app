@@ -130,7 +130,7 @@ Lovable
 Located in `components/menu/MenuInterfaces.ts`
 
 ```typescript
-export interface IMenuItem {
+interface IMenuItem {
   name: string;
   category: string;
   price: number;
@@ -144,7 +144,44 @@ export interface IMenuItem {
 Located in `components/cart/CartInterfaces.ts`
 
 ```typescript
-export interface ICartItem {
+interface ICartItem {
+  name: string;
+  price: number;
+  quantity: number;
+  instructions?: string;
+}
+```
+
+### Cart Ticket
+
+Located in `components/kitchen/TicketInterfaces.ts`
+
+```typescript
+interface ICartTicket extends ICartItem {
+  status: string;
+}
+```
+
+### Ticket
+
+Located in `components/kitchen/TicketInterfaces.ts`
+
+```typescript
+interface ITicket {
+  _id: string;
+  ticketNum: number;
+  items: ICartTicket[];
+  status: string;
+  orderTime: string;
+}
+```
+
+### Add to Cart
+
+Located in `hooks/cart/addToCart.ts`
+
+```typescript
+interface IAddToCartProps {
   name: string;
   price: number;
   quantity: number;

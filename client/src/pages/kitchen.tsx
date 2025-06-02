@@ -194,20 +194,28 @@ export const mockTickets: ITicket[] = [
     ],
     status: "completed",
     orderTime: new Date().toISOString(),
-  }
+  },
 ];
 
-export default function Kitchen(){
-
+export default function Kitchen() {
   const [tickets, setTickets] = useState(mockTickets);
 
-  return(
+  return (
     <>
-    <section className="p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-    {tickets.map((ticket) => (
-        <ItemTicket key={ticket._id} ticket={ticket} tickets={tickets} setTickets={setTickets} />
-    ))}
-    </section>
+      <section className="p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {tickets.map((ticket) => {
+          if (ticket.status !== "completed") {
+            return (
+              <ItemTicket
+                key={ticket._id}
+                ticket={ticket}
+                tickets={tickets}
+                setTickets={setTickets}
+              />
+            );
+          }
+        })}
+      </section>
     </>
-  )
+  );
 }

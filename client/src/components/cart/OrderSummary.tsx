@@ -40,7 +40,9 @@ const OrderSummary = memo(() => {
   return (
     <Card className="sticky top-0 w-full h-[225px]">
       <CardHeader>
-        <CardTitle className="pt-4">{labels.OrderSummary.orderSummary}</CardTitle>
+        <CardTitle className="pt-4">
+          {labels.OrderSummary.orderSummary}
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col items-center">
         <div className="w-full flex justify-between">

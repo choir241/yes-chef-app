@@ -1,6 +1,6 @@
 export const labels = {
-  cart:{
-    cart: "Cart"
+  cart: {
+    cart: "Cart",
   },
   menu: {
     addToOrder: "Add to Order",
