@@ -11,7 +11,7 @@ import { Button } from "../ui/button";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useEditCart } from "@/hooks/cart/editCartItem";
 import { useDeleteCartItem } from "@/hooks/cart/deleteCartItem";
-import { renderInstructions } from "./RenderInstructions";
+import renderInstructions from "./RenderInstructions";
 
 const CartItem = memo(({ item }: { item: ICartItem }) => {
   const [isInstructionsVisible, setIsInstructionsVisible] = useState(false);

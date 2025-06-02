@@ -10,6 +10,7 @@ import type { ICartItem } from "./CartInterfaces";
 import { useQuery } from "@tanstack/react-query";
 import { memo } from "react";
 import { labels } from "../../static/labels";
+import { handleOrder } from "./handleOrder";
 
 const OrderSummary = memo(() => {
   const { isPending, error, data } = useQuery({
@@ -59,7 +60,7 @@ const OrderSummary = memo(() => {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">{labels.OrderSummary.checkout}</Button>
+        <Button className="w-full" onClick = {()=>{handleOrder({cart: data})}}>{labels.OrderSummary.checkout}</Button>
       </CardFooter>
     </Card>
   );

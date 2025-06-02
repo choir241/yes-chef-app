@@ -2,6 +2,7 @@ import express from "express";
 const app = express();
 import cors from "cors";
 import cartRoutes from "./routes/cart.ts";
+import kitchenRoutes from "./routes/kitchen.ts";
 import { SERVER } from "./config/db.ts";
 
 app.use(cors());
@@ -16,4 +17,4 @@ app.listen(SERVER.SERVER_PORT, () => {
   );
 });
 
-app.use("/", cartRoutes);
+app.use("/", cartRoutes, kitchenRoutes);

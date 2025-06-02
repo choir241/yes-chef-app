@@ -12,8 +12,9 @@ import type { ICartTicket } from "./TicketInterfaces";
 import { Button } from "../ui/button";
 import { updateTicketStatus } from "./updateTickets";
 import TicketMenuItem from "./TicketMenuItem";
+import { memo } from "react";
 
-export default function ItemTicket({
+const ItemTicket = memo(({
   ticket,
   tickets,
   setTickets,
@@ -21,7 +22,7 @@ export default function ItemTicket({
   ticket: ITicket;
   tickets: ITicket[];
   setTickets: (e: ITicket[]) => void;
-}) {
+}) => {
   function handleTicketItemStatus({
     updatedItem,
   }: {
@@ -96,7 +97,7 @@ export default function ItemTicket({
           <CardTitle>Ticket #{ticket.ticketNum}</CardTitle>
           <span>
             Ordered at{" "}
-            {new Date(ticket.orderTime).toLocaleTimeString(navigator.language, {
+            {new Date(ticket.createdAt).toLocaleTimeString(navigator.language, {
               hour: "2-digit",
               minute: "2-digit",
             })}
@@ -111,10 +112,13 @@ export default function ItemTicket({
       </CardHeader>
       <CardContent>
         {ticket.items.map((item) => {
-            return <TicketMenuItem status = {ticket.status} item={item} handleTicketItemStatus={handleTicketItemStatus} />;
+            return <TicketMenuItem key ={item._id} status = {ticket.status} item={item} handleTicketItemStatus={handleTicketItemStatus} />;
         })}
       </CardContent>
       <CardFooter className="mb-4">{ticketStatus()}</CardFooter>
     </Card>
   );
-}
+});
+
+export default ItemTicket;
+

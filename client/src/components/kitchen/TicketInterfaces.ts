@@ -9,5 +9,5 @@ export interface ITicket {
   ticketNum: number;
   items: ICartTicket[];
   status: string;
-  orderTime: string;
+  createdAt: string;
 }

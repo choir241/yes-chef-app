@@ -1,7 +1,8 @@
 import { Textarea } from "../ui/textarea";
 import { labels } from "../../static/labels";
+import {memo} from "react";
 
-export function renderInstructions({
+const renderInstructions = memo(({
   localInstructions,
   updateCartItem,
   item,
@@ -15,7 +16,7 @@ export function renderInstructions({
   setLocalInstructions: any;
   isInstructionsVisible: boolean;
   setIsInstructionsVisible: any;
-}) {
+}) => {
   if (localInstructions) {
     return (
       <Textarea
@@ -68,4 +69,6 @@ export function renderInstructions({
       </>
     );
   }
-}
+});
+
+export default renderInstructions;

@@ -1,221 +1,50 @@
 import ItemTicket from "../components/kitchen/Ticket";
-import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { type ITicket } from "../components/kitchen/TicketInterfaces";
+import { useEffect, memo, useState } from "react";
+import { labels } from "../static/labels";
 
-export const mockTickets: ITicket[] = [
-  {
-    _id: "1",
-    ticketNum: 1,
-    items: [
-      {
-        name: "Caesar Salad",
-        price: 9.99,
-        quantity: 12,
-        instructions: "No Dressing",
-        status: "in progress",
-        _id: "1",
-      },
-      {
-        name: "Classic Burger",
-        price: 12.99,
-        quantity: 2,
-        instructions: "Extra cheese",
-        status: "in progress",
-        _id: "2",
-      },
-      {
-        name: "Margherita Pizza",
-        price: 14.99,
-        quantity: 1,
-        instructions: "Extra cheese",
-        status: "in progress",
-        _id: "3",
-      },
-      {
-        name: "Garlic Bread",
-        price: 6.99,
-        quantity: 4,
-        instructions: "Extra garlic",
-        status: "in progress",
-        _id: "4",
-      },
-      {
-        name: "Sparkling Water",
-        price: 2.99,
-        quantity: 3,
-        instructions: "Lemon instead of lime",
-        status: "in progress",
-        _id: "5",
-      },
-    ],
-    status: "in progress",
-    orderTime: new Date().toISOString(),
-  },
-  {
-    _id: "2",
-    ticketNum: 2,
-    items: [
-      {
-        name: "Caesar Salad",
-        price: 9.99,
-        quantity: 12,
-        instructions: "No Dressing",
-        status: "in progress",
-        _id: "1",
-      },
-      {
-        name: "Classic Burger",
-        price: 12.99,
-        quantity: 2,
-        instructions: "Extra cheese",
-        status: "in progress",
-        _id: "2",
-      },
-      {
-        name: "Margherita Pizza",
-        price: 14.99,
-        quantity: 1,
-        instructions: "Extra cheese",
-        status: "in progress",
-        _id: "3",
-      },
-      {
-        name: "Garlic Bread",
-        price: 6.99,
-        quantity: 4,
-        instructions: "Extra garlic",
-        status: "in progress",
-        _id: "4",
-      },
-      {
-        name: "Sparkling Water",
-        price: 2.99,
-        quantity: 3,
-        instructions: "Lemon instead of lime",
-        status: "in progress",
-        _id: "5",
-      },
-    ],
-    status: "pending",
-    orderTime: new Date().toISOString(),
-  },
-  {
-    _id: "3",
-    ticketNum: 3,
-    items: [
-      {
-        name: "Caesar Salad",
-        price: 9.99,
-        quantity: 12,
-        instructions: "No Dressing",
-        status: "completed",
-        _id: "1",
-      },
-      {
-        name: "Classic Burger",
-        price: 12.99,
-        quantity: 2,
-        instructions: "Extra cheese",
-        status: "in progress",
-        _id: "2",
-      },
-      {
-        name: "Margherita Pizza",
-        price: 14.99,
-        quantity: 1,
-        instructions: "Extra cheese",
-        status: "in progress",
-        _id: "3",
-      },
-      {
-        name: "Garlic Bread",
-        price: 6.99,
-        quantity: 4,
-        instructions: "Extra garlic",
-        status: "in progress",
-        _id: "4",
-      },
-      {
-        name: "Sparkling Water",
-        price: 2.99,
-        quantity: 3,
-        instructions: "Lemon instead of lime",
-        status: "in progress",
-        _id: "5",
-      },
-    ],
-    status: "completed",
-    orderTime: new Date().toISOString(),
-  },
-  {
-    _id: "4",
-    ticketNum: 4,
-    items: [
-      {
-        name: "Caesar Salad",
-        price: 9.99,
-        quantity: 12,
-        instructions: "No Dressing",
-        status: "in progress",
-        _id: "1",
-      },
-      {
-        name: "Classic Burger",
-        price: 12.99,
-        quantity: 2,
-        instructions: "Extra cheese",
-        status: "in progress",
-        _id: "2",
-      },
-      {
-        name: "Margherita Pizza",
-        price: 14.99,
-        quantity: 1,
-        instructions: "Extra cheese",
-        status: "in progress",
-        _id: "3",
-      },
-      {
-        name: "Garlic Bread",
-        price: 6.99,
-        quantity: 4,
-        instructions: "Extra garlic",
-        status: "in progress",
-        _id: "4",
-      },
-      {
-        name: "Sparkling Water",
-        price: 2.99,
-        quantity: 3,
-        instructions: "Lemon instead of lime",
-        status: "in progress",
-        _id: "5",
-      },
-    ],
-    status: "completed",
-    orderTime: new Date().toISOString(),
-  },
-];
+const Kitchen = memo(() => {
+  const { isPending, error, data } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () =>
+      fetch(`${import.meta.env.VITE_SERVER_URL}/tickets`).then((res) =>
+        res.json(),
+      ),
+  });
 
-export default function Kitchen() {
-  const [tickets, setTickets] = useState(mockTickets);
+  const [tickets, setTickets] = useState<ITicket[]>([]);
+
+  useEffect(() => {
+    if (isPending) {
+      console.log(labels.OrderSummary.loading);
+    } else if (error) {
+      console.log(labels.OrderSummary.error + error);
+    } else {
+      setTickets(data);
+    }
+  }, [isPending, error, data]);
 
   return (
     <>
       <section className="p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {tickets.map((ticket) => {
-          if (ticket.status !== "completed") {
-            return (
-              <ItemTicket
-                key={ticket._id}
-                ticket={ticket}
-                tickets={tickets}
-                setTickets={setTickets}
-              />
-            );
-          }
-        })}
+       {
+       tickets.map((ticket: ITicket) => {
+        if (ticket.status !== "completed") {
+          return (
+            <ItemTicket
+              key={ticket._id}
+              ticket={ticket}
+              tickets={tickets}
+              setTickets={setTickets}
+            />
+          );
+        }
+      })
+       }
       </section>
     </>
   );
-}
+});
+
+export default Kitchen;

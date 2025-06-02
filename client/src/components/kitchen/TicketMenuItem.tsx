@@ -1,7 +1,8 @@
-import { type ICartTicket, type ITicket } from "./TicketInterfaces";
+import { type ICartTicket} from "./TicketInterfaces";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { memo } from "react";
 
-export default function TicketMenuItem({item, handleTicketItemStatus, status}: {item: ICartTicket, handleTicketItemStatus: ({
+const TicketMenuItem = memo(function TicketMenuItem({item, handleTicketItemStatus, status}: {item: ICartTicket, handleTicketItemStatus: ({
     updatedItem,
   }: {
     updatedItem: ICartTicket;
@@ -54,4 +55,6 @@ export default function TicketMenuItem({item, handleTicketItemStatus, status}: {
       </div>
     
     )
-}
+});
+
+export default TicketMenuItem;

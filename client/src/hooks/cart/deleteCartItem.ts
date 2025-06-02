@@ -16,3 +16,10 @@ export function useDeleteCartItem() {
     },
   });
 }
+
+export async function deleteCartItem({id}: {id: string}) {
+      const response = await axios.delete(
+        `${import.meta.env.VITE_SERVER_URL}/deleteCart/${id}`,
+      );
+      return response;
+}
