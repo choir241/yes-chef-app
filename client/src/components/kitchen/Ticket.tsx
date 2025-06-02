@@ -12,6 +12,7 @@ import type { ICartTicket } from "./TicketInterfaces";
 import { Button } from "../ui/button";
 import { updateTicketStatus } from "./updateTickets";
 import TicketMenuItem from "./TicketMenuItem";
+import { useEditTicket } from "../../hooks/ticket/editTicket"
 import { memo } from "react";
 
 const ItemTicket = memo(({
@@ -23,6 +24,7 @@ const ItemTicket = memo(({
   tickets: ITicket[];
   setTickets: (e: ITicket[]) => void;
 }) => {
+  const { mutate } = useEditTicket();
   function handleTicketItemStatus({
     updatedItem,
   }: {
@@ -31,12 +33,18 @@ const ItemTicket = memo(({
     const updatedTicketItems = ticket.items.map((item) => {
       if (
         item._id === updatedItem._id &&
-        updatedItem.status === "in progress"
+        updatedItem.status === "pending"
       ) {
         return { ...item, status: "completed" };
       }
       return item;
     });
+
+    mutate({
+      id: ticket._id,
+      newTicket: {...ticket, items: updatedTicketItems},
+    })
+    
     const updatedTickets = tickets.map((currentTicket) => {
       if (currentTicket._id === ticket._id) {
         return { ...currentTicket, items: updatedTicketItems };
@@ -49,9 +57,19 @@ const ItemTicket = memo(({
   function handleTicketStatus(currentTicket: ITicket) {
     if (currentTicket.status === "pending") {
         updateTicketStatus({status: "in progress", tickets, currentTicket, setTickets});
+         mutate({
+      id: ticket._id,
+      newTicket: {...currentTicket, status: "in progress"},
+    });
+
     } else if (currentTicket.status === "in progress") {
         updateTicketStatus({status: "completed", tickets, currentTicket, setTickets});
-    }
+         mutate({
+      id: ticket._id,
+      newTicket: {...currentTicket, status: "completed"},
+    });
+
+  }
   }
 
   function ticketStatus() {

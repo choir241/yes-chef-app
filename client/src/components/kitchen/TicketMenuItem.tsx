@@ -2,11 +2,11 @@ import { type ICartTicket} from "./TicketInterfaces";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { memo } from "react";
 
-const TicketMenuItem = memo(function TicketMenuItem({item, handleTicketItemStatus, status}: {item: ICartTicket, handleTicketItemStatus: ({
+const TicketMenuItem = memo(({item, handleTicketItemStatus, status}: {item: ICartTicket, handleTicketItemStatus: ({
     updatedItem,
   }: {
     updatedItem: ICartTicket;
-  }) => void, status: string}){
+  }) => void, status: string}) => {
     return (
         <div
         onClick={() => {

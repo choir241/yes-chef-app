@@ -34,9 +34,7 @@ export const kitchenController = {
       {
         $set: {
           status: req.body.status,
-          orderTime: req.body.orderTime,
           items: req.body.items,
-          ticketNum: req.body.ticketNum,
           updatedAt: new Date(),
         },
       },

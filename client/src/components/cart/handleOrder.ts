@@ -1,6 +1,7 @@
 import type { ICartItem } from "../cart/CartInterfaces";
 import axios from "axios";
 import { deleteCartItem } from "../../hooks/cart/deleteCartItem";
+import { toast } from "react-toastify";
 
 interface IOrder extends ICartItem{
     status: string;
@@ -20,6 +21,8 @@ export async function handleOrder({cart}: {cart: IOrder[]}){
         cart.map((item: IOrder) => {
             deleteCartItem({id: item._id});
         });
+
+        toast.success("Order submitted successfully");
         
         return response.data;
     } catch (err) {
