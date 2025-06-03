@@ -2,7 +2,7 @@ import CartItem from "@/components/cart/CartItem";
 import OrderSummary from "@/components/cart/OrderSummary";
 import type { ICartItem } from "@/components/cart/CartInterfaces";
 import { useQuery } from "@tanstack/react-query";
-import { useCallback, memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { labels } from "@/static/labels";
 
 const Cart = memo(() => {
@@ -14,23 +14,27 @@ const Cart = memo(() => {
       ),
   });
 
-  const renderCart = useCallback(() => {
+  useEffect(() => {
     if (isPending) {
-      return labels.OrderSummary.loading;
+      console.log(labels.OrderSummary.loading);
     } else if (error) {
-      return labels.OrderSummary.error + error;
+      console.log(labels.OrderSummary.error + error);
     } else {
-      return data.map((item: ICartItem) => (
-        <CartItem key={item.name} item={item} />
-      ));
+      setCart(data);
     }
   }, [isPending, error, data]);
+
+  const [cart, setCart] = useState<ICartItem[]>([]);
 
   return (
     <>
       <h1 className="px-4 py-2 text-2xl font-bold">{labels.cart.cart}</h1>
       <section className="p-4 flex w-full gap-4 items-start">
-        <section className="flex flex-col w-full">{renderCart()}</section>
+        <section className="flex flex-col w-full">
+          {cart?.map((item: ICartItem) => (
+            <CartItem item={item} />
+          ))}
+        </section>
         <OrderSummary />
       </section>
     </>

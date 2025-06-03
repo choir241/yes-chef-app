@@ -141,7 +141,7 @@ const ItemTicket = memo(
           </Badge>
         </CardHeader>
         <CardContent>
-          {ticket.items.map((item) => {
+          {ticket.items?.map((item) => {
             return (
               <TicketMenuItem
                 key={item._id}

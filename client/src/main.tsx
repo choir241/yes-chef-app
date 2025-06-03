@@ -5,6 +5,7 @@ import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
+import Nav from "./components/Nav";
 
 const root = document.getElementById("root");
 
@@ -15,9 +16,11 @@ ReactDOM.createRoot(root!).render(
     <Suspense fallback={<h2> Loading...</h2>}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/kitchen" element={<Kitchen />} />
+          <Route element={<Nav />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/kitchen" element={<Kitchen />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Suspense>

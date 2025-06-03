@@ -30,9 +30,9 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
   };
 
   return (
-    <Card className="overflow-hidden relative mb-4">
+    <Card className="overflow-hidden relative mb-4" key = {item._id}>
       <CardHeader className="flex items-center justify-between pt-4">
-        <CardTitle className="font-semibold text-lg">{item.name}</CardTitle>
+        <CardTitle className="font-semibold text-lg">{item?.name}</CardTitle>
         <FaRegTrashAlt
           className="cursor-pointer hover:opacity-40"
           onClick={() => deleteCartItem.mutate({ id: item._id })}
@@ -61,8 +61,8 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
           </>
         </section>
         <div className="flex flex-col items-end">
-          <span className="font-bold">{`$${item.price * localQuantity}`}</span>
-          <span className="text-sm text-muted-foreground">{`$${item.price} each`}</span>
+          <span className="font-bold">{`$${item?.price * localQuantity}`}</span>
+          <span className="text-sm text-muted-foreground">{`$${item?.price} each`}</span>
         </div>
       </CardContent>
       <CardFooter className="mb-6 flex flex-col items-start">
