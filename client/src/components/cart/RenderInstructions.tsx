@@ -2,7 +2,7 @@ import { Textarea } from "../ui/textarea";
 import { labels } from "../../static/labels";
 import {memo} from "react";
 
-const renderInstructions = memo(({
+const RenderInstructions = memo(({
   localInstructions,
   updateCartItem,
   item,
@@ -71,4 +71,4 @@ const renderInstructions = memo(({
   }
 });
 
-export default renderInstructions;
+export default RenderInstructions;

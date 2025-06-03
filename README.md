@@ -83,10 +83,15 @@ Lovable
 - `client`
   - `app`
     - `components`
+      - `kitchen`
+        - `TicketInterfaces.ts`
+        - `Ticket.tsx`
+        - `TicketMenuItem.tsx`
+        - `updateTickets.ts`
       - `menu`
         - `MenuCategory.tsx`
         - `MenuInterfaces.ts`
-        - `Item.tsx`
+        - `MenuItem.tsx`
       - `cart`
         - `CartInterfaces.ts`
         - `CartItem.tsx`
@@ -104,12 +109,15 @@ Lovable
         - `addToCart.ts`
         - `editCartItem.ts`
         - `deleteCartItem.ts`
+      - `ticket`
+        - `editTicket.ts`
     - `static`
       - `labels.ts`
       - `menuItems.ts`
     - `pages`
       - `home.tsx`
       - `cart.tsx`
+      - `kitchen.tsx`
     - `assets`
       - `readme`
     - `routes.ts`
@@ -119,8 +127,10 @@ Lovable
     - `db.ts`
   - `controllers`
     - `cart.ts`
+    - `ticket.ts`
   - `routes`
     - `cart.ts`
+    - `ticket.ts`
   - `server.ts`
 
 ## Interfaces
@@ -158,6 +168,16 @@ Located in `components/kitchen/TicketInterfaces.ts`
 
 ```typescript
 interface ICartTicket extends ICartItem {
+  status: string;
+}
+```
+
+### Order Item
+
+Located in `components/cart/handleOrder.ts`
+
+```typescript
+interface IOrder extends ICartItem {
   status: string;
 }
 ```
@@ -235,15 +255,47 @@ Cart component
 
 ![Cart interface showing Caesar Salad and Classic Burger orders. Quantities, prices, and an Order Summary with checkout button are displayed.](./client/src/assets/readme/cartSummary.gif)
 
+Kitchen component
+
+### Design
+
+![Order summary card titled "Order #ORD-001" showing "In Progress" status. Items: Classic Burger (crossed out), French Fries, Iced Tea with extra ice.](./client/src/assets/readme/kitchenTicketCardDesign.png)
+
+### Color
+
+![Order ticket on a screen showing "In Progress" status. Fettuccine Alfredo is struck through with "extra sauce on the side," and there are 2 iced teas.](./client/src/assets/readme/kitchenTicketCardColor.png)
+
+### Current
+
+![Restaurant order dashboard with three tickets showing status: "in progress," "pending," and "completed." Includes Caesar salads, burgers, pizza, and more.](./client/src/assets/readme/kitchenTicketCard.gif)
+
 ## Hooks
+
+### Cart
 
 `addToCart.ts`
 
 event handler for adding a menu item to the cart by making a POST request to the backend and creating a new document in the database collection
 
+`editCartItem.ts`
+
+mutation handler for editing a cart item by making a PATCH request to the backend and updating the document in the database collection
+
+`deleteCartItem.ts`
+
+mutation handler for deleting a cart item by making a DELETE request to the backend and deleting the document in the database collection
+
+### Ticket
+
+`editTicket.ts`
+
+mutation handler for editing a ticket by making a PATCH request to the backend and updating the document in the database collection
+
 ## Reducers
 
 ## Backend Routes
+
+### Cart
 
 GET /cart
 
@@ -253,6 +305,25 @@ POST /addToCart
 
 creates a new document in the cart collection with the name, price, quantity, and instructions of the menu item
 
+### Ticket
+
+GET /tickets
+
+returns a json array of ticket items consisting of the name, price, quantity, menu items, ticket status, and instructions of the menu item
+
+POST /ticket
+
+creates a new document in the ticket collection with the name, price, quantity, menu items, ticket status, and instructions of the menu item
+
+PUT /ticket/:id
+
+updates a document in the ticket collection with the name, price, quantity, menu items, ticket status, and instructions of the menu item
+
+DELETE /ticket/:id
+
+deletes a document in the ticket collection
+
+
 ## Database Design
 
 - `restaurant`
@@ -261,22 +332,42 @@ creates a new document in the cart collection with the name, price, quantity, an
     - price
     - quantity
     - instructions
+  - `ticket`
+    - name
+    - price
+    - quantity
+    - menu items
+      - name
+      - price
+      - quantity
+      - instructions
+      - status
+    - ticket status
+    - instructions
 
 ## Dependencies
 
+Frontend:
 - Utilty-First CSS framework: Tailwind CSS
 - UI Component Library: Shadcn UI
 - Router: React Router
+- Data fetching: Tanstack Query
+- HTTP request library: axios
+Backend:
 - Database: MongoDB
 - Cors: cors
-- Data fetching: Tanstack Query
 - Environment variables: dotenv
+- Cors types: @types/cors
+- Express types: @types/express
+- Node types: @types/node
 
 ## Tech Stacks
 
+Frontend:
 - Frontend: Typescript
 - Library: React
 - Build tool: Vite
-- Backend: Node.js
-- Backend Framework: Express
-- Backend Language: Typescript
+Backend:
+- Runtime environment: Node.js
+- Framework: Express
+- Language: Typescript

@@ -14,6 +14,7 @@ import { updateTicketStatus } from "./updateTickets";
 import TicketMenuItem from "./TicketMenuItem";
 import { useEditTicket } from "../../hooks/ticket/editTicket"
 import { memo } from "react";
+import { labels } from "@/static/labels";
 
 const ItemTicket = memo(({
   ticket,
@@ -82,7 +83,7 @@ const ItemTicket = memo(({
           }}
           className="w-full"
         >
-          Start Ticket
+          {labels.kitchenTicket.StartTicket}
         </Button>
       );
     } else if (ticket.status === "in progress") {
@@ -95,13 +96,13 @@ const ItemTicket = memo(({
             }}
             className="w-full"
           >
-            Complete Ticket
+            {labels.kitchenTicket.CompleteTicket}
           </Button>
         );
       } else {
         return (
           <Button variant="default" disabled={true} className="w-full">
-            Complete Ticket
+            {labels.kitchenTicket.CompleteTicket}
           </Button>
         );
       }
@@ -112,9 +113,9 @@ const ItemTicket = memo(({
     <Card>
       <CardHeader className="flex items-center justify-between">
         <div className="pt-4">
-          <CardTitle>Ticket #{ticket.ticketNum}</CardTitle>
+          <CardTitle>{labels.kitchenTicket.TicketTitle} {ticket.ticketNum}</CardTitle>
           <span>
-            Ordered at{" "}
+            {labels.kitchenTicket.OrderTime}{" "}
             {new Date(ticket.createdAt).toLocaleTimeString(navigator.language, {
               hour: "2-digit",
               minute: "2-digit",

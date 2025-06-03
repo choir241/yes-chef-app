@@ -11,7 +11,7 @@ import { Button } from "../ui/button";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useEditCart } from "@/hooks/cart/editCartItem";
 import { useDeleteCartItem } from "@/hooks/cart/deleteCartItem";
-import renderInstructions from "./RenderInstructions";
+import RenderInstructions from "./RenderInstructions";
 
 const CartItem = memo(({ item }: { item: ICartItem }) => {
   const [isInstructionsVisible, setIsInstructionsVisible] = useState(false);
@@ -66,14 +66,14 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
         </div>
       </CardContent>
       <CardFooter className="mb-6 flex flex-col items-start">
-        {renderInstructions({
-          localInstructions,
-          updateCartItem,
-          item,
-          setLocalInstructions,
-          isInstructionsVisible,
-          setIsInstructionsVisible,
-        })}
+        <RenderInstructions
+          localInstructions={localInstructions}
+          updateCartItem={updateCartItem}
+          item={item}
+          setLocalInstructions={setLocalInstructions}
+          isInstructionsVisible={isInstructionsVisible}
+          setIsInstructionsVisible={setIsInstructionsVisible}
+        />
       </CardFooter>
     </Card>
   );

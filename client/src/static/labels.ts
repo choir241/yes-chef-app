@@ -28,4 +28,11 @@ export const labels = {
     total: "Total",
     checkout: "Checkout",
   },
+  kitchenTicket: {
+    StartTicket: "Start Ticket",
+    CompleteTicket: "Complete Ticket",
+    TicketTitle: "Ticket #",
+    OrderTime: "Ordered at"
+  }
+    
 };
