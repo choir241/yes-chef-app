@@ -32,7 +32,6 @@ export const labels = {
     StartTicket: "Start Ticket",
     CompleteTicket: "Complete Ticket",
     TicketTitle: "Ticket #",
-    OrderTime: "Ordered at"
-  }
-    
+    OrderTime: "Ordered at",
+  },
 };

@@ -60,7 +60,14 @@ const OrderSummary = memo(() => {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full" onClick = {()=>{handleOrder({cart: data})}}>{labels.OrderSummary.checkout}</Button>
+        <Button
+          className="w-full"
+          onClick={() => {
+            handleOrder({ cart: data });
+          }}
+        >
+          {labels.OrderSummary.checkout}
+        </Button>
       </CardFooter>
     </Card>
   );

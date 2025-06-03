@@ -5,8 +5,24 @@ import { Button } from "../ui/button";
 import { labels } from "../../static/labels";
 import { memo } from "react";
 import { addToCart } from "@/hooks/cart/addToCart";
+import { useQuery } from "@tanstack/react-query";
 
 const MenuItem = memo(({ item }: { item: IMenuItem }) => {
+  const { isPending, error, data } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () =>
+      fetch(`${import.meta.env.VITE_SERVER_URL}/cart`).then((res) =>
+        res.json(),
+      ),
+  });
+
+  if (isPending) {
+    console.log("Loading...");
+  }
+  if (error) {
+    console.log(`Error + ${error}`);
+  }
+
   return (
     <Card className="overflow-hidden relative">
       <img src={item.image} className="object-cover h-52 w-full" />
@@ -22,7 +38,9 @@ const MenuItem = memo(({ item }: { item: IMenuItem }) => {
       </CardContent>
       <CardFooter className="pb-4 flex justify-end">
         <Button
-          onClick={() => addToCart({ newCartItem: { ...item, quantity: 1 } })}
+          onClick={() =>
+            addToCart({ newCartItem: { ...item, quantity: 1 }, data })
+          }
         >
           {labels.menu.addToOrder}
         </Button>

@@ -4,7 +4,7 @@ import { Home, Cart, Kitchen } from "./routes";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Suspense } from "react";
-import {ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 const root = document.getElementById("root");
 
@@ -21,6 +21,6 @@ ReactDOM.createRoot(root!).render(
         </Routes>
       </BrowserRouter>
     </Suspense>
-    <ToastContainer position = {"bottom-right"} theme={"light"}/>
+    <ToastContainer position={"bottom-right"} theme={"light"} />
   </QueryClientProvider>,
 );

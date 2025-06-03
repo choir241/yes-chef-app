@@ -28,20 +28,18 @@ const Kitchen = memo(() => {
   return (
     <>
       <section className="p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-       {
-       tickets.map((ticket: ITicket) => {
-        if (ticket.status !== "completed") {
-          return (
-            <ItemTicket
-              key={ticket._id}
-              ticket={ticket}
-              tickets={tickets}
-              setTickets={setTickets}
-            />
-          );
-        }
-      })
-       }
+        {tickets.map((ticket: ITicket) => {
+          if (ticket.status !== "completed") {
+            return (
+              <ItemTicket
+                key={ticket._id}
+                ticket={ticket}
+                tickets={tickets}
+                setTickets={setTickets}
+              />
+            );
+          }
+        })}
       </section>
     </>
   );

@@ -323,7 +323,6 @@ DELETE /ticket/:id
 
 deletes a document in the ticket collection
 
-
 ## Database Design
 
 - `restaurant`
@@ -348,12 +347,13 @@ deletes a document in the ticket collection
 ## Dependencies
 
 Frontend:
+
 - Utilty-First CSS framework: Tailwind CSS
 - UI Component Library: Shadcn UI
 - Router: React Router
 - Data fetching: Tanstack Query
 - HTTP request library: axios
-Backend:
+  Backend:
 - Database: MongoDB
 - Cors: cors
 - Environment variables: dotenv
@@ -364,10 +364,11 @@ Backend:
 ## Tech Stacks
 
 Frontend:
+
 - Frontend: Typescript
 - Library: React
 - Build tool: Vite
-Backend:
+  Backend:
 - Runtime environment: Node.js
 - Framework: Express
 - Language: Typescript
