@@ -34,4 +34,9 @@ export const labels = {
     TicketTitle: "Ticket #",
     OrderTime: "Ordered at",
   },
+  nav: {
+    Home: "Home",
+    Cart: "Cart",
+    Kitchen: "Kitchen"
+  }
 };

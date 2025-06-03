@@ -30,7 +30,7 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
   };
 
   return (
-    <Card className="overflow-hidden relative mb-4" key = {item._id}>
+    <Card className="overflow-hidden relative mb-4" key={item._id}>
       <CardHeader className="flex items-center justify-between pt-4">
         <CardTitle className="font-semibold text-lg">{item?.name}</CardTitle>
         <FaRegTrashAlt

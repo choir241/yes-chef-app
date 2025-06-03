@@ -31,9 +31,7 @@ const Cart = memo(() => {
       <h1 className="px-4 py-2 text-2xl font-bold">{labels.cart.cart}</h1>
       <section className="p-4 flex w-full gap-4 items-start">
         <section className="flex flex-col w-full">
-          {cart?.map((item: ICartItem) => (
-            <CartItem item={item} />
-          ))}
+          {cart?.map((item: ICartItem) => <CartItem item={item} />)}
         </section>
         <OrderSummary />
       </section>
