@@ -1,7 +1,4 @@
 export const labels = {
-  cart: {
-    cart: "Cart",
-  },
   menu: {
     addToOrder: "Add to Order",
   },

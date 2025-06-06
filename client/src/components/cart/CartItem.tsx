@@ -40,25 +40,23 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
       </CardHeader>
       <CardContent className="flex justify-between items-start">
         <section className="flex gap-2">
-          <>
-            <Button
-              className="h-8 w-8"
-              variant="outline"
-              onClick={() => handleQuantityChange(localQuantity - 1)}
-            >
-              {"-"}
-            </Button>
-            <span className="flex items-end w-16 h-8 bg-[#f6f4ee] rounded-md border px-3 py-1 text-base shadow-xs md:text-sm">
-              {localQuantity}
-            </span>
-            <Button
-              className="h-8 w-8"
+          <Button
+            className="h-8 w-8"
+            variant="outline"
+            onClick={() => handleQuantityChange(localQuantity - 1)}
+          >
+            {"-"}
+          </Button>
+          <span className="flex items-end w-16 h-8 bg-[#f6f4ee] rounded-md border px-3 py-1 text-base shadow-xs md:text-sm">
+            {localQuantity}
+          </span>
+          <Button
+            className="h-8 w-8"
               variant="outline"
               onClick={() => handleQuantityChange(localQuantity + 1)}
             >
               {"+"}
             </Button>
-          </>
         </section>
         <div className="flex flex-col items-end">
           <span className="font-bold">{`$${item?.price * localQuantity}`}</span>

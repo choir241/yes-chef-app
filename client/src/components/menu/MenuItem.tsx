@@ -3,7 +3,7 @@ import type { IMenuItem } from "./MenuInterfaces";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { labels } from "../../static/labels";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { addToCart } from "@/hooks/cart/addToCart";
 import { useQuery } from "@tanstack/react-query";
 
@@ -23,6 +23,8 @@ const MenuItem = memo(({ item }: { item: IMenuItem }) => {
     console.log(`Error + ${error}`);
   }
 
+  const [localQuantity, setLocalQuantity] = useState(1);
+
   return (
     <Card className="overflow-hidden relative">
       <img src={item.image} className="object-cover h-52 w-full" />
@@ -36,10 +38,29 @@ const MenuItem = memo(({ item }: { item: IMenuItem }) => {
           {item.description}
         </p>
       </CardContent>
-      <CardFooter className="pb-4 flex justify-end">
+      <CardFooter className="pb-4 flex gap-4 justify-between">
+      <section className="flex gap-2">
+          <Button
+            className="h-8 w-8"
+            variant="outline"
+            onClick={() => setLocalQuantity(localQuantity - 1)}
+          >
+            {"-"}
+          </Button>
+          <span className="flex items-end w-16 h-8 bg-[#f6f4ee] rounded-md border px-3 py-1 text-base shadow-xs md:text-sm">
+              {localQuantity}
+          </span>
+          <Button
+            className="h-8 w-8"
+              variant="outline"
+              onClick={() => setLocalQuantity(localQuantity + 1)}
+            >
+              {"+"}
+            </Button>
+        </section>
         <Button
           onClick={() =>
-            addToCart({ newCartItem: { ...item, quantity: 1 }, data })
+            addToCart({ newCartItem: { ...item, quantity: localQuantity }, data })
           }
         >
           {labels.menu.addToOrder}

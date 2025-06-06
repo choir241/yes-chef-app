@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import type { ICartItem } from "../cart/CartInterfaces";
+import type { ICartItem } from "../../components/cart/CartInterfaces";
 interface IAddToCartProps {
   name: string;
   price: number;
@@ -21,10 +21,11 @@ export async function addToCart({
         return item;
       }
     });
+
     if (findItem) {
       const response = await axios.patch(
         `${import.meta.env.VITE_SERVER_URL}/updateCart/${findItem._id}`,
-        { ...findItem, quantity: findItem.quantity + 1 },
+        { ...findItem, quantity: findItem.quantity + newCartItem.quantity },
       );
       toast.success("Item quantity updated");
       return response.data;
