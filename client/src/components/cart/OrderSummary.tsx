@@ -22,9 +22,9 @@ const OrderSummary = memo(() => {
   });
 
   if (isPending) {
-    return labels.OrderSummary.loading;
+    return <h2 className="text-2xl font-bold flex p-4">{labels.OrderSummary.loading}</h2>;
   } else if (error) {
-    return labels.OrderSummary.error + error;
+    return <h2 className="text-2xl font-bold flex p-4">{labels.OrderSummary.error + error}</h2>;
   }
 
   const subtotal = Number(

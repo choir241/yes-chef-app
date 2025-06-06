@@ -13,8 +13,6 @@ const Kitchen = memo(() => {
       ),
   });
 
-  const [tickets, setTickets] = useState<ITicket[]>([]);
-
   useEffect(() => {
     if (isPending) {
       console.log(labels.OrderSummary.loading);
@@ -25,13 +23,16 @@ const Kitchen = memo(() => {
     }
   }, [isPending, error, data]);
 
+  const [tickets, setTickets] = useState<ITicket[]>([]);
+
   return (
     <>
       <section className="w-full p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {tickets.map((ticket: ITicket) => {
+        {tickets.length > 0 && tickets.map((ticket: ITicket, index: number) => {
           if (ticket.status !== "completed") {
             return (
               <ItemTicket
+                index={index}
                 key={ticket._id}
                 ticket={ticket}
                 tickets={tickets}

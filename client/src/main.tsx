@@ -13,7 +13,7 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(root!).render(
   <QueryClientProvider client={queryClient}>
-    <Suspense fallback={<h2> Loading...</h2>}>
+    <Suspense fallback={<h2 className="text-9xl font-bold flex justify-center items-center h-screen"> Loading...</h2>}>
       <BrowserRouter>
         <Routes>
           <Route element={<Nav />}>
