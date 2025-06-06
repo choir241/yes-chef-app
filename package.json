@@ -1,0 +1,35 @@
+{
+  "name": "yes-chef-app",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Wanting an application that I build on my own while also being in full control of the organization and flow of the folder structure, I decided to take the DSD group project I worked on with the team and take full ownership of it while not changing the original repo.",
+  "main": "index.js",
+  "devDependencies": {
+    "@chromatic-com/storybook": "^4.0.0",
+    "@storybook/addon-docs": "^9.0.5",
+    "@storybook/addon-links": "^9.0.5",
+    "@storybook/addon-onboarding": "^9.0.5",
+    "@storybook/react-vite": "^9.0.5",
+    "prop-types": "^15.8.1",
+    "storybook": "^9.0.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choir241/yes-chef-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/choir241/yes-chef-app/issues"
+  },
+  "homepage": "https://github.com/choir241/yes-chef-app#readme",
+  "dependencies": {
+    "@storybook/addon-design-assets": "^6.2.9"
+  }
+}
