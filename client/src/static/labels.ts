@@ -35,7 +35,7 @@ export const labels = {
     OrderTime: "Ordered at",
   },
   nav: {
-    Home: "Home",
+    Home: "Menu",
     Cart: "Cart",
     Kitchen: "Kitchen"
   }
