@@ -32,7 +32,7 @@ const MenuItem = memo(({ item }: { item: IMenuItem }) => {
           <CardTitle className="font-semibold text-lg">{item.name}</CardTitle>
           <span className="font-bold">{`$${item.price}`}</span>
         </div>
-        <p className="text-sm text-muted-foreground min-h-10">
+        <p className={item.description.length > 50 ? "text-sm text-muted-foreground min-h-10" : "w-[500px] text-sm text-muted-foreground min-h-10"}>
           {item.description}
         </p>
       </CardContent>
