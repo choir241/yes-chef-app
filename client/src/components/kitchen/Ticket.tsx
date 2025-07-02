@@ -122,7 +122,8 @@ const ItemTicket = memo(
         <CardHeader className="flex items-center justify-between">
           <div className="pt-4">
             <CardTitle>
-              {labels.kitchenTicket.TicketTitle}{index + 1}
+              {labels.kitchenTicket.TicketTitle}
+              {index + 1}
             </CardTitle>
             <span>
               {labels.kitchenTicket.OrderTime}{" "}

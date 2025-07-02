@@ -52,11 +52,11 @@ const CartItem = memo(({ item }: { item: ICartItem }) => {
           </span>
           <Button
             className="h-8 w-8"
-              variant="outline"
-              onClick={() => handleQuantityChange(localQuantity + 1)}
-            >
-              {"+"}
-            </Button>
+            variant="outline"
+            onClick={() => handleQuantityChange(localQuantity + 1)}
+          >
+            {"+"}
+          </Button>
         </section>
         <div className="flex flex-col items-end">
           <span className="font-bold">{`$${item?.price * localQuantity}`}</span>

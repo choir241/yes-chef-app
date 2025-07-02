@@ -22,9 +22,17 @@ const OrderSummary = memo(() => {
   });
 
   if (isPending) {
-    return <h2 className="text-2xl font-bold flex p-4">{labels.OrderSummary.loading}</h2>;
+    return (
+      <h2 className="text-2xl font-bold flex p-4">
+        {labels.OrderSummary.loading}
+      </h2>
+    );
   } else if (error) {
-    return <h2 className="text-2xl font-bold flex p-4">{labels.OrderSummary.error + error}</h2>;
+    return (
+      <h2 className="text-2xl font-bold flex p-4">
+        {labels.OrderSummary.error + error}
+      </h2>
+    );
   }
 
   const subtotal = Number(
@@ -48,15 +56,15 @@ const OrderSummary = memo(() => {
       <CardContent className="flex flex-col items-center">
         <div className="w-full flex justify-between">
           <h3>{labels.OrderSummary.subtotal}</h3>
-          <h3>${subtotal}</h3>
+          <h3>${subtotal.toFixed(2)}</h3>
         </div>
         <div className="w-full flex justify-between">
           <h3>{labels.OrderSummary.tax}</h3>
-          <h3>${tax}</h3>
+          <h3>${tax.toFixed(2)}</h3>
         </div>
         <div className="w-full flex justify-between">
           <h3>{labels.OrderSummary.total}</h3>
-          <h3>${total}</h3>
+          <h3>${total.toFixed(2)}</h3>
         </div>
       </CardContent>
       <CardFooter>

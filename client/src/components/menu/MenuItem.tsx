@@ -34,12 +34,18 @@ const MenuItem = memo(({ item }: { item: IMenuItem }) => {
           <CardTitle className="font-semibold text-lg">{item.name}</CardTitle>
           <span className="font-bold">{`$${item.price}`}</span>
         </div>
-        <p className={item.description.length > 50 ? "text-sm text-muted-foreground min-h-10" : "w-[500px] text-sm text-muted-foreground min-h-10"}>
+        <p
+          className={
+            item.description.length > 50
+              ? "text-sm text-muted-foreground min-h-10"
+              : "w-[500px] text-sm text-muted-foreground min-h-10"
+          }
+        >
           {item.description}
         </p>
       </CardContent>
       <CardFooter className="pb-4 flex gap-4 justify-between">
-      <section className="flex gap-2">
+        <section className="flex gap-2">
           <Button
             className="h-8 w-8"
             variant="outline"
@@ -48,19 +54,22 @@ const MenuItem = memo(({ item }: { item: IMenuItem }) => {
             {"-"}
           </Button>
           <span className="flex items-end w-16 h-8 bg-[#f6f4ee] rounded-md border px-3 py-1 text-base shadow-xs md:text-sm">
-              {localQuantity}
+            {localQuantity}
           </span>
           <Button
             className="h-8 w-8"
-              variant="outline"
-              onClick={() => setLocalQuantity(localQuantity + 1)}
-            >
-              {"+"}
-            </Button>
+            variant="outline"
+            onClick={() => setLocalQuantity(localQuantity + 1)}
+          >
+            {"+"}
+          </Button>
         </section>
         <Button
           onClick={() =>
-            addToCart({ newCartItem: { ...item, quantity: localQuantity }, data })
+            addToCart({
+              newCartItem: { ...item, quantity: localQuantity },
+              data,
+            })
           }
         >
           {labels.menu.addToOrder}

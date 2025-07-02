@@ -34,6 +34,16 @@ export const labels = {
   nav: {
     Home: "Menu",
     Cart: "Cart",
-    Kitchen: "Kitchen"
-  }
+    Kitchen: "Kitchen",
+    Inventory: "Inventory",
+  },
+  inventory: {
+    name: "Name",
+    unitPrice: "Unit Price",
+    status: "Status",
+    nextOrderDate: "Next Order Date",
+    orderMore: "Order More",
+    quantity: "Quantity",
+    total: "Total"
+  },
 };
